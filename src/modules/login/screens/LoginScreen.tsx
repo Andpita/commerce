@@ -1,27 +1,10 @@
-import { useState } from 'react';
-
 import { Button } from '../../../shared/components/buttons/Button';
 import { InputDefault } from '../../../shared/components/inputs/InputDefault';
+import { useLogin } from '../hooks/useLogin';
 import { ContainerLogin, SubContainer, TitleLogin } from '../styles/login.styles';
 
 export const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const changeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const changePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    console.log({
-      email: email,
-      password: password,
-    });
-  };
+  const { changeEmail, changePassword, handleSubmit, password, email } = useLogin();
 
   return (
     <ContainerLogin>
