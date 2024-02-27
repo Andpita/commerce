@@ -8,13 +8,14 @@ import { AuthType } from '../types/AuthType';
 
 export const useRequest = () => {
   const [loading, setLoading] = useState(false);
-  const { setUser } = useGlobalReducer();
+  const { setNotification, setUser } = useGlobalReducer();
 
   const request = async <T>(
     url: string,
     method: string,
     saveGlobal?: (obj: T) => void,
     body?: unknown,
+    message?: string,
   ): Promise<T | undefined> => {
     setLoading(true);
 
@@ -22,6 +23,9 @@ export const useRequest = () => {
       .then((result) => {
         if (saveGlobal) {
           saveGlobal(result);
+        }
+        if (message) {
+          setNotification('success', message);
         }
 
         return result;

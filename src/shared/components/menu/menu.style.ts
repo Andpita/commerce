@@ -17,3 +17,19 @@ export const ContainerMenu = styled.div`
     justify-content: center;
   }
 `;
+
+export const ProfileContainer = styled.div`
+  background-color: white;
+  color: red;
+  width: 300px;
+  height: 46px;
+  margin: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+`;
+
+export const CadastroButton = styled.span`
+  cursor: pointer;
+`;

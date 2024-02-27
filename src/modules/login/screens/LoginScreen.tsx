@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../shared/components/buttons/Button';
 import { LimitedContainer } from '../../../shared/components/containers/limitedContainers.styled';
 import { InputDefault } from '../../../shared/components/inputs/InputDefault';
+import { RoutesEnum } from '../../../shared/enums/route.enum';
 import { useLogin } from '../hooks/useLogin';
 import { ContainerLogin, SubContainer, TitleLogin } from '../styles/login.styles';
 
@@ -45,7 +46,11 @@ export const LoginScreen = () => {
           <div>
             Ou então crie seu usuário{' '}
             <b>
-              <u>clicando aqui.</u>
+              <u>
+                <a style={{ cursor: 'pointer' }} onClick={() => navigate(RoutesEnum.USER_CREATE)}>
+                  clicando aqui.
+                </a>
+              </u>
             </b>
           </div>
         </SubContainer>

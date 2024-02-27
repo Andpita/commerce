@@ -9,6 +9,7 @@ export enum RoutesEnum {
   CATEGORY_INSERT = '/category/insert',
   ORDER = '/order',
   ORDER_ID = '/order/:orderId',
+  USER_CREATE = '/create-user',
   USER_ALL = '/user/all',
   USER_INSERT_ADM = '/user/admin',
 }

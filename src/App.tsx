@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom';
 
 import { CategoryRoutes } from './modules/category/routes';
+import { CreateUserRoutes } from './modules/createUser/routes';
 import { FirstScreenRoutes } from './modules/firstScreen/routes';
 import { LoginRoutes } from './modules/login/routes';
 import { ProductRoutes } from './modules/product/routes';
@@ -13,7 +14,12 @@ import { useNotification } from './shared/hooks/useNotification';
 import { useRequest } from './shared/hooks/useRequest';
 import { useGlobalReducer } from './store/reducers/globalReducer/useGlobalReducer';
 
-const openRoutes: RouteObject[] = [...LoginRoutes, ...ProductRoutes, ...CategoryRoutes];
+const openRoutes: RouteObject[] = [
+  ...LoginRoutes,
+  ...ProductRoutes,
+  ...CategoryRoutes,
+  ...CreateUserRoutes,
+];
 const privateRoutes: RouteObject[] = [...FirstScreenRoutes];
 
 const router: RemixRouter = createBrowserRouter([...openRoutes, ...privateRoutes]);
