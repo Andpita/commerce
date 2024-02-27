@@ -1,10 +1,10 @@
 export enum RoutesEnum {
   LOGIN = '/login',
   HOME = '/',
-  PRODUCT = '/product',
+  PRODUCT = '/produtos' /** */,
   PRODUCT_ID = '/product/:id',
   PRODUCT_INSERT = '/product/insert',
-  CATEGORY = '/category',
+  CATEGORY = '/categorias' /** */,
   CATEGORY_ID = '/category/:id',
   CATEGORY_INSERT = '/category/insert',
   ORDER = '/order',

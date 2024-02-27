@@ -39,13 +39,9 @@ export const useRequest = () => {
 
     await ConnectionAPIPost<AuthType>(URL_AUTH, body)
       .then((result) => {
-        if (result.user.typeUser === 1) {
-          return;
-        }
-
         setAuthorizationToken(result.accessToken);
         setUser(result.user);
-        location.href = '/product';
+        location.href = '/produtos';
 
         return result;
       })

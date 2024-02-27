@@ -41,5 +41,5 @@ export const verifyLoggedIn = async () => {
 
 export const logout = (navigate: NavigateFunction) => {
   unsetAuthorizationToken();
-  navigate(RoutesEnum.LOGIN);
+  navigate(RoutesEnum.HOME);
 };

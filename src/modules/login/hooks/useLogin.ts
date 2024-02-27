@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { RoutesEnum } from '../../../shared/enums/route.enum';
+import { useRequest } from '../../../shared/hooks/useRequest';
 import { useGlobalReducer } from '../../../store/reducers/globalReducer/useGlobalReducer';
 
 export const useLogin = () => {
@@ -9,6 +10,7 @@ export const useLogin = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { user } = useGlobalReducer();
+  const { loading, authRequest } = useRequest();
 
   useEffect(() => {
     if (user) {
@@ -25,7 +27,7 @@ export const useLogin = () => {
   };
 
   const handleSubmit = () => {
-    console.log({
+    authRequest({
       email: email,
       password: password,
     });
@@ -37,5 +39,7 @@ export const useLogin = () => {
     changeEmail,
     password,
     email,
+    loading,
+    user,
   };
 };

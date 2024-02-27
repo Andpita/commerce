@@ -1,3 +1,5 @@
+import { Screen } from '../../../shared/components/screen/Screen';
+
 export const FirstScreen = () => {
-  return <div>TELA INICIAL</div>;
+  return <Screen>BEM VINDO</Screen>;
 };

@@ -5,32 +5,39 @@ interface ThumbnailProps {
 }
 
 export const ThumbnailContainer = styled.div<ThumbnailProps>`
-  height: 200px;
-  border-radius: 4px;
-  width: 400px;
+  height: 300px;
+  width: 200px;
+  border-radius: 5px;
   border: 1px solid green;
   margin: ${(props) => props.margin || '0px'};
   display: flex;
+  flex-direction: column;
+  background-color: white;
 `;
 
 export const AreaImage = styled.div`
-  min-width: 50%;
-  width: 50%;
-  margin: 10px;
+  min-height: 60%;
+  height: 60%;
+  padding: 10px;
 `;
 
 export const ThumbnailImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 5px;
+  border: solid 1px darkblue;
+  &:hover {
+    opacity: 50%;
+  }
 `;
 
 export const AreaData = styled.div`
-  padding: 10px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
 
   div {
-    padding: 10px;
+    padding: 4px;
   }
 `;
