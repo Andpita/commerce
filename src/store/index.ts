@@ -9,9 +9,9 @@ export type RootState = ReturnType<typeof store.getState>;
 
 export const store = configureStore({
   reducer: {
-    cartReducer,
+    categoryReducer,
     globalReducer,
     productsReducer,
-    categoryReducer,
+    cartReducer,
   },
 });

@@ -1,8 +1,10 @@
 import {
   HomeOutlined,
   LaptopOutlined,
+  OrderedListOutlined,
   ProfileOutlined,
   SafetyCertificateOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu as MenuAntd } from 'antd';
@@ -43,6 +45,21 @@ export const Menu = () => {
       onClick: () => navigate('/ofertas'),
     },
   ];
+
+  const items2: MenuItem[] = [
+    {
+      key: 'Home',
+      label: 'Perfil',
+      icon: <UserOutlined />,
+      onClick: () => navigate('/'),
+    },
+    {
+      key: 'Products',
+      label: 'Pedidos',
+      icon: <OrderedListOutlined />,
+      onClick: () => navigate('/produtos'),
+    },
+  ];
   return (
     <ContainerMenu>
       <MenuAntd
@@ -52,9 +69,22 @@ export const Menu = () => {
         items={items}
         mode="horizontal"
       />
+
       <ProfileContainer>
         {user ? (
-          ` Bem vindo ${user.name}!`
+          <MenuAntd
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}
+            items={items2}
+            theme="light"
+            mode="horizontal"
+            style={{
+              width: '240px',
+              background: 'LightSkyBlue',
+              borderRadius: '20px',
+              height: '30px',
+            }}
+          />
         ) : (
           <CadastroButton onClick={() => navigate(RoutesEnum.USER_CREATE)}>
             Faça seu cadastro aqui!

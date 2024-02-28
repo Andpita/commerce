@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { CartType } from '../../../shared/types/CartType';
 
-interface ProductState {
+interface CartState {
   cart?: CartType;
 }
 
-const initialState: ProductState = {
+const initialState: CartState = {
   cart: undefined,
 };
 
@@ -14,7 +14,7 @@ export const cartSlice = createSlice({
   name: 'cartReducer',
   initialState,
   reducers: {
-    setCartAction: (state, action: PayloadAction<CartType | undefined>) => {
+    setCartAction: (state, action: PayloadAction<CartType>) => {
       state.cart = action.payload;
     },
   },

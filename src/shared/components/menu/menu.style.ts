@@ -22,14 +22,19 @@ export const ProfileContainer = styled.div`
   background-color: white;
   color: red;
   width: 300px;
-  height: 46px;
+  height: 30px;
   margin: 0px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  border-radius: 20px;
+  margin: 5px 5px 5px 0px;
+  width: 240px;
 `;
 
 export const CadastroButton = styled.span`
   cursor: pointer;
+
+  text-align: center;
 `;
