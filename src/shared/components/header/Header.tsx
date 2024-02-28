@@ -2,6 +2,7 @@ import { MailOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/ic
 import { useNavigate } from 'react-router-dom';
 
 import { useGlobalReducer } from '../../../store/reducers/globalReducer/useGlobalReducer';
+import { RoutesEnum } from '../../enums/route.enum';
 import { logout } from '../../functions/connections/auth';
 import { Button } from '../buttons/Button';
 import { ContainerHeader, ImageCar, LogoContainer, TextContainer, Title } from './header.style';
@@ -38,7 +39,7 @@ export const Header = () => {
             <Button
               icon={<ShoppingCartOutlined />}
               style={{ height: '50px', margin: '10px', width: '120px' }}
-              onClick={() => console.log('')}
+              onClick={() => navigate(RoutesEnum.CART)}
             >
               Carrinho
             </Button>

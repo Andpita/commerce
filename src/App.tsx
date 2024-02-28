@@ -2,6 +2,7 @@ import type { Router as RemixRouter } from '@remix-run/router';
 import { useEffect } from 'react';
 import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom';
 
+import { CartRoutes } from './modules/cart/routes';
 import { CategoryRoutes } from './modules/category/routes';
 import { CreateUserRoutes } from './modules/createUser/routes';
 import { FirstScreenRoutes } from './modules/firstScreen/routes';
@@ -20,7 +21,7 @@ const openRoutes: RouteObject[] = [
   ...CategoryRoutes,
   ...CreateUserRoutes,
 ];
-const privateRoutes: RouteObject[] = [...FirstScreenRoutes];
+const privateRoutes: RouteObject[] = [...FirstScreenRoutes, ...CartRoutes];
 
 const router: RemixRouter = createBrowserRouter([...openRoutes, ...privateRoutes]);
 

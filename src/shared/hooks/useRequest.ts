@@ -38,11 +38,15 @@ export const useRequest = () => {
     return data;
   };
 
-  const authRequest = async (body: unknown): Promise<void> => {
+  const authRequest = async (body: unknown, message?: boolean): Promise<void> => {
     setLoading(true);
 
     await ConnectionAPIPost<AuthType>(URL_AUTH, body)
       .then((result) => {
+        if (message) {
+          setNotification('success', `Bem vindo ${result.user.name}`);
+        }
+
         setAuthorizationToken(result.accessToken);
         setUser(result.user);
         location.href = '/produtos';
@@ -50,6 +54,8 @@ export const useRequest = () => {
         return result;
       })
       .catch(() => {
+        setNotification('error', `Usuário ou senha inválidos`);
+
         return undefined;
       })
       .finally(() => {

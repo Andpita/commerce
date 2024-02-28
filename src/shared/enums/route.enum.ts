@@ -12,4 +12,5 @@ export enum RoutesEnum {
   USER_CREATE = '/create-user',
   USER_ALL = '/user/all',
   USER_INSERT_ADM = '/user/admin',
+  CART = '/cart',
 }

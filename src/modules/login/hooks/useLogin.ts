@@ -27,10 +27,13 @@ export const useLogin = () => {
   };
 
   const handleSubmit = () => {
-    authRequest({
-      email: email,
-      password: password,
-    });
+    authRequest(
+      {
+        email: email,
+        password: password,
+      },
+      true,
+    );
   };
 
   return {
