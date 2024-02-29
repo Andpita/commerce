@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const ContainerHeader = styled.div`
-  background-color: #ffb703;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(261deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+
   margin-left: auto;
   height: 200px;
   display: flex;

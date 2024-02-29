@@ -3,7 +3,7 @@ export enum RoutesEnum {
   HOME = '/',
 
   PRODUCT = '/produtos' /** */,
-  PRODUCT_ID = '/product/:id',
+  PRODUCT_ID = '/produtos/:id' /** */,
   PRODUCT_INSERT = '/product/insert',
 
   CATEGORY = '/categorias' /** */,

@@ -8,7 +8,6 @@ export const ThumbnailContainer = styled.div<ThumbnailProps>`
   height: 300px;
   width: 200px;
   border-radius: 5px;
-  border: 1px solid green;
   margin: ${(props) => props.margin || '0px'};
   display: flex;
   flex-direction: column;
