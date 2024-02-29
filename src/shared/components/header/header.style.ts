@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 export const ContainerHeader = styled.div`
-  height: 200px;
-  background-color: darkmagenta;
+  background-color: #ffb703;
   margin-left: auto;
-
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -18,6 +17,12 @@ export const ContainerHeader = styled.div`
 
 export const TextContainer = styled.div`
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+
   div {
     display: flex;
     align-items: center;
@@ -41,5 +46,6 @@ export const Title = styled.h1`
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   font-style: italic;
-  color: white;
+  color: black;
+  font-size: 40px;
 `;

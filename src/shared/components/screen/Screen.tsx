@@ -6,12 +6,12 @@ interface ScreenProps {
   children: React.ReactNode;
 }
 
-export const Screen = ({ children }: ScreenProps) => {
+export const Screen = ({ children, ...props }: ScreenProps) => {
   return (
     <>
       <Header />
       <Menu />
-      <ScreenContainer>{children}</ScreenContainer>
+      <ScreenContainer {...props}>{children}</ScreenContainer>
     </>
   );
 };

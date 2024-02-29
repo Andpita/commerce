@@ -41,18 +41,20 @@ export const Category = () => {
 
   return (
     <Screen>
-      <BoxButton>
-        <LimitedContainer width={320}>
-          <Search placeholder="Buscar Categoria..." onSearch={handleSearchCategory} enterButton />
-        </LimitedContainer>
-        <LimitedContainer width={160}>
-          <Button type="primary" onClick={handleCategoryInsert}>
-            Inserir
-          </Button>
-        </LimitedContainer>
-      </BoxButton>
+      <div>
+        <BoxButton>
+          <LimitedContainer width={320}>
+            <Search placeholder="Buscar Categoria..." onSearch={handleSearchCategory} enterButton />
+          </LimitedContainer>
+          <LimitedContainer width={160}>
+            <Button type="primary" onClick={handleCategoryInsert}>
+              Inserir
+            </Button>
+          </LimitedContainer>
+        </BoxButton>
 
-      <Table columns={columns} dataSource={categories} rowKey={'id'} />
+        <Table columns={columns} dataSource={categories} rowKey={'id'} />
+      </div>
     </Screen>
   );
 };

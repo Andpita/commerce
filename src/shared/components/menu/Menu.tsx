@@ -51,7 +51,7 @@ export const Menu = () => {
       key: 'Home',
       label: 'Perfil',
       icon: <UserOutlined />,
-      onClick: () => navigate('/'),
+      onClick: () => navigate('/profile'),
     },
     {
       key: 'Products',
@@ -65,7 +65,7 @@ export const Menu = () => {
       <MenuAntd
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
-        theme="dark"
+        theme="light"
         items={items}
         mode="horizontal"
       />
@@ -79,10 +79,8 @@ export const Menu = () => {
             theme="light"
             mode="horizontal"
             style={{
-              width: '240px',
-              background: 'LightSkyBlue',
-              borderRadius: '20px',
-              height: '30px',
+              width: '100%',
+              borderRadius: '15px',
             }}
           />
         ) : (

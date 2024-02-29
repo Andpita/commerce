@@ -8,6 +8,7 @@ import { CreateUserRoutes } from './modules/createUser/routes';
 import { FirstScreenRoutes } from './modules/firstScreen/routes';
 import { LoginRoutes } from './modules/login/routes';
 import { ProductRoutes } from './modules/product/routes';
+import { ProfileRoutes } from './modules/profile/routes';
 import { URL_USER } from './shared/constants/urls';
 import { MethodsEnum } from './shared/enums/methods.enum';
 import { getAuthorizationToken } from './shared/functions/connections/auth';
@@ -21,7 +22,7 @@ const openRoutes: RouteObject[] = [
   ...CategoryRoutes,
   ...CreateUserRoutes,
 ];
-const privateRoutes: RouteObject[] = [...FirstScreenRoutes, ...CartRoutes];
+const privateRoutes: RouteObject[] = [...FirstScreenRoutes, ...CartRoutes, ...ProfileRoutes];
 
 const router: RemixRouter = createBrowserRouter([...openRoutes, ...privateRoutes]);
 

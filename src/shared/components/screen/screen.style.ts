@@ -6,11 +6,10 @@ export const marginScreen = lateralBar;
 
 export const ScreenContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
-  flex-direction: row;
+  justify-content: center;
 
   margin-left: auto;
-  background-color: lightgray;
+  background-color: #cfcfcf;
 
   width: 100%;
 `;

@@ -5,7 +5,7 @@ export const ContainerMenu = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #001529;
+  background-color: white;
   -webkit-box-shadow: 1px 0px 8px 0px rgba(0, 0, 0, 0.71);
   -moz-box-shadow: 1px 0px 8px 0px rgba(0, 0, 0, 0.71);
   box-shadow: 1px 0px 8px 0px rgba(0, 0, 0, 0.71);
@@ -19,9 +19,9 @@ export const ContainerMenu = styled.div`
 `;
 
 export const ProfileContainer = styled.div`
+  width: 300px;
   background-color: white;
   color: red;
-  width: 300px;
   height: 30px;
   margin: 0px 20px;
   display: flex;
@@ -29,12 +29,14 @@ export const ProfileContainer = styled.div`
   justify-content: center;
   font-weight: bold;
   border-radius: 20px;
-  margin: 5px 5px 5px 0px;
-  width: 240px;
 `;
 
 export const CadastroButton = styled.span`
   cursor: pointer;
-
+  width: 100%;
   text-align: center;
+  width: '100%';
+  background: 'LightSkyBlue';
+  border-radius: '20px';
+  height: '40px';
 `;

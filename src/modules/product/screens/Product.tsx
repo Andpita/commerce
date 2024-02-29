@@ -19,7 +19,6 @@ export const Product = () => {
     request<ProductType[]>(URL_PRODUCTS, MethodsEnum.GET, setProducts);
   }, []);
 
-  console.log(products);
   return (
     <Screen>
       <LateralBar />
