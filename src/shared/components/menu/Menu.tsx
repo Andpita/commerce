@@ -57,7 +57,7 @@ export const Menu = () => {
       key: 'Products',
       label: 'Pedidos',
       icon: <OrderedListOutlined />,
-      onClick: () => navigate('/produtos'),
+      onClick: () => navigate('/order'),
     },
   ];
   return (

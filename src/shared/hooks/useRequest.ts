@@ -30,7 +30,8 @@ export const useRequest = () => {
 
         return result;
       })
-      .catch(() => {
+      .catch((e: Error) => {
+        setNotification('error', e.message);
         return undefined;
       })
       .finally(() => setLoading(false));

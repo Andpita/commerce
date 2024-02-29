@@ -51,7 +51,6 @@ export const useProfile = () => {
   };
 
   const handleSubmit = async () => {
-    console.log(user);
     await request(URL_USER, MethodsEnum.PUT, setReducerUser, user, 'Usuário editado com sucesso!');
     setReducerUser({
       name: user.name,

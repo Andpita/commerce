@@ -7,9 +7,8 @@ export const marginScreen = lateralBar;
 export const ScreenContainer = styled.div`
   display: flex;
   justify-content: center;
-
-  margin-left: auto;
-  background-color: #cfcfcf;
+  margin-top: 50px;
+  background-color: aliceblue;
 
   width: 100%;
 `;

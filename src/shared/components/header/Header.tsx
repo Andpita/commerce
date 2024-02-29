@@ -12,7 +12,7 @@ export const Header = () => {
     <>
       <ContainerHeader>
         <LogoContainer>
-          <ImageCar src={'./car.png'} />
+          <ImageCar src="/car.png" />
           <Title>GAG STORE</Title>
         </LogoContainer>
 
