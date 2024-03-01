@@ -10,6 +10,7 @@ export const useProducts = () => {
   const { request, loading } = useRequest();
   const { products, setProducts } = useProductReducer();
   useEffect(() => {
+    setProducts([]);
     request<ProductType[]>(URL_PRODUCTS, MethodsEnum.GET, setProducts);
   }, []);
 

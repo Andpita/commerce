@@ -1,4 +1,4 @@
-import { DisplayFlexCenter } from '../../../shared/components/displays/display.styled';
+import { DisplayFlexCenterCustom } from '../../../shared/components/displays/display.styled';
 import { LateralBar } from '../../../shared/components/latelBar/LateralBar';
 import Loading from '../../../shared/components/loading/Loading';
 import { Screen } from '../../../shared/components/screen/Screen';
@@ -14,9 +14,9 @@ export const Product = () => {
       <LateralBar />
       <ContainerProducts>
         {loading ? (
-          <DisplayFlexCenter>
+          <DisplayFlexCenterCustom>
             <Loading size="large" />
-          </DisplayFlexCenter>
+          </DisplayFlexCenterCustom>
         ) : (
           <ProductArea>
             {products.map((product) => (

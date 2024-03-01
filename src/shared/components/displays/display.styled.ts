@@ -13,3 +13,11 @@ export const DisplayFlexCenter = styled.div`
   //
   align-items: center;
 `;
+
+export const DisplayFlexCenterCustom = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  align-items: center;
+`;

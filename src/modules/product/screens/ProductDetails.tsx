@@ -5,7 +5,11 @@ import { useParams } from 'react-router-dom';
 import { Button } from '../../../shared/components/buttons/Button';
 import { ButtonPlus } from '../../../shared/components/buttons/button.styels';
 import { LimitedContainer } from '../../../shared/components/containers/limitedContainers.styled';
-import { DisplayFlexCenter } from '../../../shared/components/displays/display.styled';
+import {
+  DisplayFlexCenter,
+  DisplayFlexCenterCustom,
+} from '../../../shared/components/displays/display.styled';
+import Loading from '../../../shared/components/loading/Loading';
 import { Screen } from '../../../shared/components/screen/Screen';
 import { convertMoney } from '../../../shared/functions/money';
 import { useProductDetail } from '../hooks/useProductDetails';
@@ -30,7 +34,9 @@ export const ProductDetails = () => {
     <Screen>
       <ProductContainer>
         {loading ? (
-          <div>OI</div>
+          <DisplayFlexCenterCustom>
+            <Loading size="large" />
+          </DisplayFlexCenterCustom>
         ) : (
           <>
             <Image
