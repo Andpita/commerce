@@ -1,23 +1,13 @@
-import { useEffect } from 'react';
-
 import { DisplayFlexCenter } from '../../../shared/components/displays/display.styled';
 import { LateralBar } from '../../../shared/components/latelBar/LateralBar';
 import Loading from '../../../shared/components/loading/Loading';
 import { Screen } from '../../../shared/components/screen/Screen';
 import { Thumbnail } from '../../../shared/components/thumbnail/thumbnail';
-import { URL_PRODUCTS } from '../../../shared/constants/urls';
-import { MethodsEnum } from '../../../shared/enums/methods.enum';
-import { useRequest } from '../../../shared/hooks/useRequest';
-import { ProductType } from '../../../shared/types/ProductType';
-import { useProductReducer } from '../../../store/reducers/productsReducer/useProductReducer';
+import { useProducts } from '../hooks/useProducts';
 import { ContainerProducts, ProductArea } from '../styles/product.style';
 
 export const Product = () => {
-  const { request, loading } = useRequest();
-  const { products, setProducts } = useProductReducer();
-  useEffect(() => {
-    request<ProductType[]>(URL_PRODUCTS, MethodsEnum.GET, setProducts);
-  }, []);
+  const { loading, products } = useProducts();
 
   return (
     <Screen>

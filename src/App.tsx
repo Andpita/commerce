@@ -7,6 +7,7 @@ import { CategoryRoutes } from './modules/category/routes';
 import { CreateUserRoutes } from './modules/createUser/routes';
 import { FirstScreenRoutes } from './modules/firstScreen/routes';
 import { LoginRoutes } from './modules/login/routes';
+import { OffersRoutes } from './modules/offer/routes';
 import { OrderRoutes } from './modules/order/routes';
 import { ProductRoutes } from './modules/product/routes';
 import { ProfileRoutes } from './modules/profile/routes';
@@ -28,6 +29,7 @@ const privateRoutes: RouteObject[] = [
   ...CartRoutes,
   ...ProfileRoutes,
   ...OrderRoutes,
+  ...OffersRoutes,
 ];
 
 const router: RemixRouter = createBrowserRouter([...openRoutes, ...privateRoutes]);

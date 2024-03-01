@@ -10,8 +10,8 @@ export type RootState = ReturnType<typeof store.getState>;
 
 export const store = configureStore({
   reducer: {
-    categoryReducer,
     globalReducer,
+    categoryReducer,
     productsReducer,
     cartReducer,
     orderReducer,

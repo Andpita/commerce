@@ -12,13 +12,21 @@ import { useNavigate } from 'react-router-dom';
 
 import { useGlobalReducer } from '../../../store/reducers/globalReducer/useGlobalReducer';
 import { RoutesEnum } from '../../enums/route.enum';
-import { CadastroButton, ContainerMenu, ProfileContainer } from './menu.style';
+import { logout } from '../../functions/connections/auth';
+import {
+  ButtonLoginAndLogout,
+  CadastroButton,
+  ContainerMenu,
+  LoginContainer,
+  ProfileContainer,
+  RegisterContainer,
+} from './menu.style';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
 export const Menu = () => {
   const navigate = useNavigate();
-  const { user } = useGlobalReducer();
+  const { user, setUser } = useGlobalReducer();
   const items: MenuItem[] = [
     {
       key: 'Home',
@@ -70,8 +78,8 @@ export const Menu = () => {
         mode="horizontal"
       />
 
-      <ProfileContainer>
-        {user ? (
+      {user ? (
+        <ProfileContainer>
           <MenuAntd
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
@@ -83,12 +91,31 @@ export const Menu = () => {
               borderRadius: '15px',
             }}
           />
-        ) : (
+        </ProfileContainer>
+      ) : (
+        <RegisterContainer>
           <CadastroButton onClick={() => navigate(RoutesEnum.USER_CREATE)}>
             Faça seu cadastro aqui!
           </CadastroButton>
+        </RegisterContainer>
+      )}
+
+      <LoginContainer>
+        {!user ? (
+          <ButtonLoginAndLogout onClick={() => navigate(RoutesEnum.LOGIN)}>
+            Login
+          </ButtonLoginAndLogout>
+        ) : (
+          <ButtonLoginAndLogout
+            onClick={() => {
+              setUser(undefined);
+              logout(navigate);
+            }}
+          >
+            Sair
+          </ButtonLoginAndLogout>
         )}
-      </ProfileContainer>
+      </LoginContainer>
     </ContainerMenu>
   );
 };

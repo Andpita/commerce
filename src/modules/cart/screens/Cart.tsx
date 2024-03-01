@@ -1,10 +1,12 @@
 import { TableProps } from 'antd';
 import { useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Loading from '../../../shared/components/loading/Loading';
 import { Screen } from '../../../shared/components/screen/Screen';
 import Table from '../../../shared/components/table/Table';
 import { ThumbnailImage } from '../../../shared/components/thumbnail/thumbnail.style';
+import { RoutesEnum } from '../../../shared/enums/route.enum';
 import { convertMoney } from '../../../shared/functions/money';
 import { CartProductsType } from '../../../shared/types/CartProductType';
 import { useGlobalReducer } from '../../../store/reducers/globalReducer/useGlobalReducer';
@@ -19,12 +21,14 @@ import {
 export const Cart = () => {
   const { cart, loading } = useCart();
   const { setNotification, user } = useGlobalReducer();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user && !loading) {
+    if (!user) {
       setNotification('error', 'Faça login para continuar');
+      navigate(RoutesEnum.LOGIN);
     }
-  }, []);
+  }, [user]);
 
   const columns: TableProps<CartProductsType>['columns'] = useMemo(
     () => [
