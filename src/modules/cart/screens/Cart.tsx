@@ -22,13 +22,14 @@ export const Cart = () => {
   const { cart, loading } = useCart();
   const { setNotification, user } = useGlobalReducer();
   const navigate = useNavigate();
+  let acc = 0;
 
   useEffect(() => {
     if (!user) {
       setNotification('error', 'Faça login para continuar');
       navigate(RoutesEnum.LOGIN);
     }
-  }, [user]);
+  }, []);
 
   const columns: TableProps<CartProductsType>['columns'] = useMemo(
     () => [
@@ -40,7 +41,12 @@ export const Cart = () => {
         render: (_, cartProduct) => (
           <a>
             <ThumbnailImage
-              style={{ maxHeight: '150px', maxWidth: '150px' }}
+              style={{
+                height: '120px',
+                width: '150px',
+                maxHeight: '150px',
+                maxWidth: '150px',
+              }}
               src={cartProduct.product?.image}
             />
           </a>
@@ -53,10 +59,6 @@ export const Cart = () => {
         render: (_, cartProduct) => (
           <ContainerDescriptions>
             <span>Produto: {cartProduct.product?.name}</span>
-            <span>Altura: {cartProduct.product?.height}</span>
-            <span>Largura: {cartProduct.product?.length}</span>
-            <span>Comprimento: {cartProduct.product?.width}</span>
-            <span>Peso: {cartProduct.product?.weight}</span>
           </ContainerDescriptions>
         ),
       },
@@ -86,19 +88,30 @@ export const Cart = () => {
         title: 'Preço',
         dataIndex: 'price',
         key: 'price',
-        render: (_, cartProduct) => (
-          <ContainerDescriptions>
-            <a>
-              {cartProduct.product?.price
-                ? convertMoney(cartProduct.product?.price * cartProduct.amount)
-                : 0}
-            </a>
-          </ContainerDescriptions>
-        ),
+        render: (_, cartProduct) => {
+          const priceTotalItem = cartProduct.product
+            ? cartProduct.product?.price * cartProduct.amount
+            : 0;
+
+          return (
+            <ContainerDescriptions>
+              <a>{convertMoney(priceTotalItem)}</a>
+            </ContainerDescriptions>
+          );
+        },
       },
     ],
     [],
   );
+
+  cart?.cartProducts.map((product) => {
+    if (!product.product) {
+      return;
+    } else {
+      const parcial: number = product.amount * product.product?.price;
+      acc = acc + parcial;
+    }
+  });
 
   return (
     <Screen>
@@ -114,15 +127,10 @@ export const Cart = () => {
               rowKey={'id'}
             />
             <AreaPayment>
-              <div>
-                Valor dos produtos: <span>100,00</span>
+              <div style={{ width: '100%', padding: '20px', margin: '20px' }}>
+                Valor dos Produtos: {acc.toFixed(2)}
               </div>
-              <div>
-                Valor do frete: <span>100,00</span>
-              </div>
-              <div>
-                Valor dos final: <span>100,00</span>
-              </div>
+              <div style={{ width: '100%', padding: '20px', margin: '20px' }}>Frete: 0.00</div>
             </AreaPayment>
           </DividerCart>
         )}

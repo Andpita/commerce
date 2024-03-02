@@ -28,7 +28,8 @@ import {
 
 export const ProductDetails = () => {
   const { id } = useParams();
-  const { loading, product, amountProduct, setAmountProduct } = useProductDetail(`${id}`);
+  const { loading, product, amountProduct, setAmountProduct, submitProductInOrder } =
+    useProductDetail(`${id}`);
 
   return (
     <Screen>
@@ -163,7 +164,9 @@ export const ProductDetails = () => {
               </ProductDatailsInternalArea>
               <DisplayFlexCenter>
                 <LimitedContainer width={200}>
-                  <Button>Adicionar ao Carrinho</Button>
+                  <Button onClick={() => id && submitProductInOrder(+id, amountProduct)}>
+                    Adicionar ao Carrinho
+                  </Button>
                 </LimitedContainer>
               </DisplayFlexCenter>
             </ProductDatailsContainer>

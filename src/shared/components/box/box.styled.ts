@@ -6,3 +6,14 @@ export const BoxButton = styled.div`
   margin: 16px;
   gap: 16px;
 `;
+
+export const BoxButtonLateral = styled.div`
+  background-color: lightblue;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 20px;
+  padding: 20px;
+  gap: 16px;
+`;

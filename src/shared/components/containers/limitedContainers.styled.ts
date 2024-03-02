@@ -6,4 +6,6 @@ interface LimitedContainerProps {
 
 export const LimitedContainer = styled.div<LimitedContainerProps>`
   width: ${(props) => props.width}px;
+  display: flex;
+  flex-direction: column;
 `;
