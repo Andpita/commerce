@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { URL_USER } from '../../../shared/constants/urls';
-import { InsertUser } from '../../../shared/dto/insertUser';
+import { InsertUserDTO } from '../../../shared/dto/insertUser.dto.';
 import { MethodsEnum } from '../../../shared/enums/methods.enum';
 import { RoutesEnum } from '../../../shared/enums/route.enum';
 import { useRequest } from '../../../shared/hooks/useRequest';
@@ -13,7 +13,7 @@ export const useProfile = () => {
   const { request, loading } = useRequest();
   const navigate = useNavigate();
   const { user: reducerUser, setUser: setReducerUser } = useGlobalReducer();
-  const [user, setUser] = useState<InsertUser>({
+  const [user, setUser] = useState<InsertUserDTO>({
     name: '',
     lastName: '',
     email: '',

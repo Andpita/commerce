@@ -1,4 +1,4 @@
-import { TableProps } from 'antd';
+import { Button, TableProps } from 'antd';
 import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ import {
 } from '../styles/cart.style';
 
 export const Cart = () => {
-  const { cart, loading } = useCart();
+  const { cart, loading, paymentTest } = useCart();
   const { setNotification, user } = useGlobalReducer();
   const navigate = useNavigate();
   let acc = 0;
@@ -131,6 +131,7 @@ export const Cart = () => {
                 Valor dos Produtos: {acc.toFixed(2)}
               </div>
               <div style={{ width: '100%', padding: '20px', margin: '20px' }}>Frete: 0.00</div>
+              <Button onClick={() => paymentTest()}>PAGAMENTO TESTE</Button>
             </AreaPayment>
           </DividerCart>
         )}

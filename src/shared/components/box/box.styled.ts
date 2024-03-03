@@ -16,4 +16,5 @@ export const BoxButtonLateral = styled.div`
   margin: 20px;
   padding: 20px;
   gap: 16px;
+  height: 250px;
 `;

@@ -8,7 +8,7 @@ export const useCartReducer = () => {
   const dispatch = useDispatch();
 
   const { cart } = useAppSelector((state) => state.cartReducer);
-  const setCart = (cart: CartType) => {
+  const setCart = (cart?: CartType) => {
     dispatch(setCartAction(cart));
   };
 

@@ -1,8 +1,8 @@
-import { BoxButtonLateral } from '../../../shared/components/box/box.styled';
 import { Button } from '../../../shared/components/buttons/Button';
 import { LimitedContainer } from '../../../shared/components/containers/limitedContainers.styled';
 import { DisplayFlexEvenly } from '../../../shared/components/displays/display.styled';
 import { InputDefault } from '../../../shared/components/inputs/InputDefault';
+import { MenuProfile } from '../../../shared/components/menu/MenuProfile';
 import { Screen } from '../../../shared/components/screen/Screen';
 import { useProfile } from '../hooks/useUser';
 
@@ -13,13 +13,7 @@ export const Profile = () => {
   return (
     <Screen>
       <DisplayFlexEvenly>
-        <BoxButtonLateral>
-          <Button type="primary">DADOS</Button>
-          <Button type="primary">ENDEREÇOS</Button>
-          <Button type="primary">CADASTRAR NOVO ENDEREÇO</Button>
-          <Button type="primary">ALTERAR SENHA</Button>
-          <Button type="primary">OUTROS</Button>
-        </BoxButtonLateral>
+        <MenuProfile />
         <div
           style={{
             width: '60%',
@@ -27,7 +21,7 @@ export const Profile = () => {
           }}
         >
           <LimitedContainer
-            width={500}
+            width={600}
             style={{ background: 'lightblue', borderRadius: '10px', padding: '20px' }}
           >
             <span>ALTERAR DADOS</span>

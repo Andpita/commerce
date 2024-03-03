@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { URL_CART } from '../../../shared/constants/urls';
+import { URL_CART, URL_PAYMENTS } from '../../../shared/constants/urls';
 import { MethodsEnum } from '../../../shared/enums/methods.enum';
 import { useRequest } from '../../../shared/hooks/useRequest';
 import { CartType } from '../../../shared/types/CartType';
@@ -20,8 +20,49 @@ export const useCart = () => {
     }
   }, [user]);
 
+  const dateGeneration = () => {
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+
+    const d = new Date();
+    const dateF = `${d.getDate()}/${months[d.getMonth()]}/${d.getFullYear()}`;
+
+    return dateF;
+  };
+
+  const paymentTest = async () => {
+    const date = dateGeneration();
+
+    await request(
+      URL_PAYMENTS,
+      MethodsEnum.POST,
+      undefined,
+      {
+        codePix: 'teste frontend',
+        datePayment: `${date}`,
+        addressId: 1,
+      },
+      'Processando Pagamento',
+    );
+
+    setCart(undefined);
+  };
+
   return {
     cart,
     loading,
+    paymentTest,
   };
 };

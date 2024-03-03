@@ -1,4 +1,4 @@
-export interface InsertUser {
+export interface InsertUserDTO {
   name: string;
   email: string;
   phone: string;

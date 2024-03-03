@@ -106,7 +106,7 @@ export const OrderDetail = () => {
       label: 'Status',
       children: (
         <Badge
-          status={orderById?.payment?.paymentStatus.id === 1 ? 'success' : 'processing'}
+          status={orderById?.payment?.paymentStatus.id === 1 ? 'processing' : 'success'}
           text={orderById?.payment?.paymentStatus.status}
         />
       ),
