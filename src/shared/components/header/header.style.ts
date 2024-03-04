@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const ContainerHeader = styled.div`
-  background: rgb(34, 193, 195);
-  background: linear-gradient(261deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+  background: #219ebc;
 
   margin-left: auto;
   height: 200px;
@@ -48,6 +47,6 @@ export const Title = styled.h1`
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   font-style: italic;
-  color: black;
   font-size: 40px;
+  color: #023047;
 `;

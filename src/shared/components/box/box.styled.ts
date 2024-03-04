@@ -8,7 +8,7 @@ export const BoxButton = styled.div`
 `;
 
 export const BoxButtonLateral = styled.div`
-  background-color: lightblue;
+  background-color: #8ecae6;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

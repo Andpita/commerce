@@ -59,7 +59,7 @@ export const useProfile = () => {
       phone: user.phone,
       lastName: user.lastName || '',
     });
-    //navigate(RoutesEnum.PRODUCT);
+    navigate(RoutesEnum.PRODUCT);
   };
 
   const handleClickcancel = () => {

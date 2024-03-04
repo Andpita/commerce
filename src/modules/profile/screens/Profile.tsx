@@ -5,6 +5,7 @@ import { InputDefault } from '../../../shared/components/inputs/InputDefault';
 import { MenuProfile } from '../../../shared/components/menu/MenuProfile';
 import { Screen } from '../../../shared/components/screen/Screen';
 import { useProfile } from '../hooks/useUser';
+import { FormDefault, TitleProfile } from '../styles/profile.style';
 
 export const Profile = () => {
   const { disableButton, handleChange, handleClickcancel, handleSubmit, loading, user } =
@@ -22,10 +23,10 @@ export const Profile = () => {
         >
           <LimitedContainer
             width={600}
-            style={{ background: 'lightblue', borderRadius: '10px', padding: '20px' }}
+            style={{ background: '#8ECAE6', borderRadius: '10px', padding: '20px' }}
           >
-            <span>ALTERAR DADOS</span>
-            <form>
+            <TitleProfile>ALTERAR DADOS</TitleProfile>
+            <FormDefault>
               <InputDefault
                 onChange={(event) => handleChange(event, 'name')}
                 value={user.name}
@@ -74,7 +75,7 @@ export const Profile = () => {
                 placeholder="Sua senha"
                 margin="0px 0px 8px 0px"
               />
-            </form>
+            </FormDefault>
             <DisplayFlexEvenly>
               <LimitedContainer width={120}>
                 <Button

@@ -18,7 +18,7 @@ export const MenuProfile = () => {
       <Button type="primary" onClick={() => navigate(RoutesEnum.USER_ADDRESS_POST)}>
         CADASTRAR NOVO ENDEREÇO
       </Button>
-      <Button type="primary" onClick={() => alert('Disabled')}>
+      <Button type="primary" onClick={() => navigate(RoutesEnum.USER_PASS)}>
         ALTERAR SENHA
       </Button>
       <Button type="primary" onClick={() => alert('Disabled')}>

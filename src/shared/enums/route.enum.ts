@@ -14,6 +14,7 @@ export enum RoutesEnum {
   ORDER_ID = '/order/:orderId',
 
   USER = '/profile',
+  USER_PASS = '/profile/changePassword',
   USER_ADDRESS = '/profile/address',
   USER_ADDRESS_POST = '/profile/address/new',
   USER_CREATE = '/create-user',

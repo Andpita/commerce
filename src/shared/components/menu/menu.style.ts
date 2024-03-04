@@ -85,5 +85,8 @@ export const LoginContainer = styled.div`
 export const ButtonLoginAndLogout = styled.span`
   cursor: pointer;
   width: 100px;
-  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

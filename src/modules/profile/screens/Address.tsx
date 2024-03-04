@@ -12,6 +12,7 @@ import { Screen } from '../../../shared/components/screen/Screen';
 import Table from '../../../shared/components/table/Table';
 import { AddressType } from '../../../shared/types/AddressType';
 import { useAddress } from '../hooks/useAddress';
+import { TitleProfile } from '../styles/profile.style';
 
 const columns: TableProps<AddressType>['columns'] = [
   {
@@ -81,9 +82,9 @@ export const Address = () => {
         >
           <LimitedContainer
             width={600}
-            style={{ background: 'lightblue', borderRadius: '10px', padding: '20px' }}
+            style={{ background: '#8ECAE6', borderRadius: '10px', padding: '20px' }}
           >
-            <span>ENDEREÇOS</span>
+            <TitleProfile>ENDEREÇOS</TitleProfile>
             <Table columns={columns} dataSource={address} rowKey={'orderId'} />
           </LimitedContainer>
         </div>

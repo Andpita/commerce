@@ -50,7 +50,7 @@ export const Menu = () => {
       key: 'order',
       label: 'Ofertas',
       icon: <SafetyCertificateOutlined />,
-      onClick: () => navigate('/ofertas'),
+      onClick: () => alert('Disabled'),
     },
   ];
 

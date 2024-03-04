@@ -1,6 +1,6 @@
 export interface AddressDTO {
   complement: string;
-  numberAddress: number;
+  numberAddress: number | string;
   cep: string;
-  cityId: number;
+  cityId: number | string;
 }

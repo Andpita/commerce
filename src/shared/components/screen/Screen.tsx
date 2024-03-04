@@ -1,3 +1,4 @@
+import { Footer } from '../footer/Footer';
 import { Header } from '../header/Header';
 import { Menu } from '../menu/Menu';
 import { ScreenContainer } from './screen.style';
@@ -12,6 +13,7 @@ export const Screen = ({ children, ...props }: ScreenProps) => {
       <Header />
       <Menu />
       <ScreenContainer {...props}>{children}</ScreenContainer>
+      <Footer />
     </>
   );
 };
