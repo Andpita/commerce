@@ -22,6 +22,11 @@ export const useProfile = () => {
     password: '',
   });
 
+  const [changePass, setChangePass] = useState({
+    newPassword: '',
+    oldPassword: '',
+  });
+
   useEffect(() => {
     if (reducerUser) {
       setUser({
@@ -50,6 +55,13 @@ export const useProfile = () => {
     });
   };
 
+  const handleChangePass = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
+    setChangePass({
+      ...changePass,
+      [key]: event.target.value,
+    });
+  };
+
   const handleSubmit = async () => {
     await request(URL_USER, MethodsEnum.PUT, setReducerUser, user, 'Usuário editado com sucesso!');
     setReducerUser({
@@ -59,6 +71,18 @@ export const useProfile = () => {
       phone: user.phone,
       lastName: user.lastName || '',
     });
+    navigate(RoutesEnum.PRODUCT);
+  };
+
+  const submitChangePass = async () => {
+    await request(
+      URL_USER,
+      MethodsEnum.PATCH,
+      undefined,
+      changePass,
+      'Senha alterada com sucesso!',
+    );
+
     navigate(RoutesEnum.PRODUCT);
   };
 
@@ -73,5 +97,9 @@ export const useProfile = () => {
     handleSubmit,
     handleChange,
     user,
+
+    changePass,
+    handleChangePass,
+    submitChangePass,
   };
 };

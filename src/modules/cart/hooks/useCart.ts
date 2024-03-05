@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { URL_CART, URL_PAYMENTS } from '../../../shared/constants/urls';
+import { FRETE_CALC, URL_CART, URL_PAYMENTS } from '../../../shared/constants/urls';
 import { MethodsEnum } from '../../../shared/enums/methods.enum';
 import { useRequest } from '../../../shared/hooks/useRequest';
 import { CartType } from '../../../shared/types/CartType';
@@ -60,9 +60,49 @@ export const useCart = () => {
     setCart(undefined);
   };
 
+  const freteCalc = async () => {
+    const frete = await request(
+      FRETE_CALC,
+      MethodsEnum.POST,
+      undefined,
+      {
+        cepOrigem: '88021062',
+        cepDestino: '60170001',
+        vlrMerc: 100,
+        pesoMerc: 1,
+        volumes: [
+          {
+            peso: 1,
+            altura: 20,
+            largura: 20,
+            comprimento: 20,
+            tipo: 'null',
+            valor: 0,
+            quantidade: 1,
+          },
+        ],
+        produtos: [
+          {
+            peso: 1,
+            altura: 20,
+            largura: 20,
+            comprimento: 20,
+            valor: 0,
+            quantidade: 1,
+          },
+        ],
+        servicos: ['simular'],
+        ordernar: 'string',
+      },
+      'teste teste TESTE',
+    );
+    console.log('frete', frete);
+  };
+
   return {
     cart,
     loading,
     paymentTest,
+    freteCalc,
   };
 };

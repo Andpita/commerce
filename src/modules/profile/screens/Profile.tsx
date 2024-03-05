@@ -1,10 +1,13 @@
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { Input } from 'antd';
+
 import { Button } from '../../../shared/components/buttons/Button';
 import { LimitedContainer } from '../../../shared/components/containers/limitedContainers.styled';
 import { DisplayFlexEvenly } from '../../../shared/components/displays/display.styled';
 import { InputDefault } from '../../../shared/components/inputs/InputDefault';
 import { MenuProfile } from '../../../shared/components/menu/MenuProfile';
 import { Screen } from '../../../shared/components/screen/Screen';
-import { useProfile } from '../hooks/useUser';
+import { useProfile } from '../hooks/useProfile';
 import { FormDefault, TitleProfile } from '../styles/profile.style';
 
 export const Profile = () => {
@@ -66,14 +69,16 @@ export const Profile = () => {
                 autoComplete="current-phone"
                 margin="0px 0px 8px 0px"
               />
-              <InputDefault
-                onChange={(event) => handleChange(event, 'password')}
-                value={user.password}
+              <div style={{ margin: '10px 0px 0px 10px' }}>Senha</div>
+              <Input.Password
                 title="Senha"
+                onChange={(event) => handleChange(event, 'password')}
+                iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                value={user.password}
                 type="password"
                 autoComplete="current-password"
                 placeholder="Sua senha"
-                margin="0px 0px 8px 0px"
+                style={{ margin: '0px 0px 8px 0px' }}
               />
             </FormDefault>
             <DisplayFlexEvenly>

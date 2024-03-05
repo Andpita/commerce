@@ -1,4 +1,4 @@
-import { Button, TableProps } from 'antd';
+import { Button, Select, TableProps } from 'antd';
 import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,7 +8,9 @@ import Table from '../../../shared/components/table/Table';
 import { ThumbnailImage } from '../../../shared/components/thumbnail/thumbnail.style';
 import { RoutesEnum } from '../../../shared/enums/route.enum';
 import { convertMoney } from '../../../shared/functions/money';
+import { AddressType } from '../../../shared/types/AddressType';
 import { CartProductsType } from '../../../shared/types/CartProductType';
+import { useAddressReducer } from '../../../store/reducers/addressReducer/useAddressReducer';
 import { useGlobalReducer } from '../../../store/reducers/globalReducer/useGlobalReducer';
 import { useCart } from '../hooks/useCart';
 import {
@@ -19,9 +21,10 @@ import {
 } from '../styles/cart.style';
 
 export const Cart = () => {
-  const { cart, loading, paymentTest } = useCart();
+  const { cart, loading, paymentTest, freteCalc } = useCart();
   const { setNotification, user } = useGlobalReducer();
   const navigate = useNavigate();
+  const { address } = useAddressReducer();
   let acc = 0;
 
   useEffect(() => {
@@ -127,10 +130,32 @@ export const Cart = () => {
               rowKey={'id'}
             />
             <AreaPayment>
-              <div style={{ width: '100%', padding: '20px', margin: '20px' }}>
+              <div style={{ padding: '20px', margin: '20px' }}>
                 Valor dos Produtos: {acc.toFixed(2)}
               </div>
-              <div style={{ width: '100%', padding: '20px', margin: '20px' }}>Frete: 0.00</div>
+              <div style={{ padding: '20px', margin: '20px' }}>
+                Endereço de Entrega:
+                <Select
+                  style={{ width: '300px', height: '100px', marginBottom: '8px' }}
+                  options={
+                    address &&
+                    address.map((address: AddressType) => ({
+                      value: `${address.id}`,
+                      label: (
+                        <>
+                          CEP: {address.cep}
+                          <br />
+                          {address.city?.name}/{address.city?.state?.name}
+                          <br />
+                          {address.complement}/{address.numberAddress}
+                        </>
+                      ),
+                    }))
+                  }
+                  onChange={() => freteCalc()}
+                />
+              </div>
+              <div style={{ padding: '20px', margin: '20px' }}>Frete: 0.00</div>
               <Button onClick={() => paymentTest()}>PAGAMENTO TESTE</Button>
             </AreaPayment>
           </DividerCart>
