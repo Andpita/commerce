@@ -77,9 +77,6 @@ export const useNewAddress = () => {
   };
 
   const handleChangeCity = (value: string) => {
-    if (value) {
-      console.log('teste');
-    }
     setNewAddress({
       ...newAddress,
       cityId: value,

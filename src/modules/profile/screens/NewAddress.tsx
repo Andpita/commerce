@@ -35,7 +35,6 @@ export const NewAddress = () => {
           }}
         >
           <LimitedContainer
-            width={600}
             style={{ background: '#8ECAE6', borderRadius: '10px', padding: '20px' }}
           >
             <TitleProfile>Novo Endereço</TitleProfile>

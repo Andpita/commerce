@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface LimitedContainerProps {
-  width: number;
+  width?: number;
 }
 
 export const LimitedContainer = styled.div<LimitedContainerProps>`

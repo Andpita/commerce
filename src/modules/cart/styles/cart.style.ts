@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const CartContainer = styled.div`
-  width: 100%;
   height: 100%;
   margin: 20px;
   padding: 20px;
-  background-color: cadetblue;
+  background-color: #219ebc;
+  border-radius: 10px;
 `;
 
 export const ContainerDescriptions = styled.div`
@@ -19,8 +19,8 @@ export const DividerCart = styled.div`
 `;
 
 export const AreaPayment = styled.div`
-  width: 100%;
+  min-width: 30%;
   min-height: 100%;
-  background-color: lemonchiffon;
+  background-color: white;
   border-radius: 5px;
 `;

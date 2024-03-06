@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-import { ERROR_ACCESS_DANIED, ERROR_NOT_FOUND, ERROR_SERVICE } from '../../constants/errorStatus';
+import { ERROR_ACCESS_DANIED, ERROR_SERVICE } from '../../constants/errorStatus';
 import { MethodsEnum } from '../../enums/methods.enum';
 import { getAuthorizationToken } from './auth';
 
@@ -35,8 +35,6 @@ export default class ConnectionAPI {
             throw new Error(ERROR_ACCESS_DANIED);
           case 403:
             throw new Error(ERROR_ACCESS_DANIED);
-          case 404:
-            throw new Error(ERROR_NOT_FOUND);
           case 500:
             throw new Error(ERROR_SERVICE);
         }

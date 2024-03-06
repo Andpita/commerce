@@ -16,7 +16,7 @@ import { TitleProfile } from '../styles/profile.style';
 
 const columns: TableProps<AddressType>['columns'] = [
   {
-    title: 'Endereço',
+    title: 'Id',
     dataIndex: 'id',
     key: 'id',
     width: 100,
@@ -81,11 +81,10 @@ export const Address = () => {
           }}
         >
           <LimitedContainer
-            width={600}
             style={{ background: '#8ECAE6', borderRadius: '10px', padding: '20px' }}
           >
             <TitleProfile>ENDEREÇOS</TitleProfile>
-            <Table columns={columns} dataSource={address} rowKey={'orderId'} />
+            <Table columns={columns} dataSource={address} rowKey={'id'} />
           </LimitedContainer>
         </div>
       </DisplayFlexEvenly>

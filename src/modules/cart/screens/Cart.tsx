@@ -2,6 +2,10 @@ import { Button, Select, TableProps } from 'antd';
 import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import {
+  DisplayFlexCenter,
+  DisplayFlexEvenly,
+} from '../../../shared/components/displays/display.styled';
 import Loading from '../../../shared/components/loading/Loading';
 import { Screen } from '../../../shared/components/screen/Screen';
 import Table from '../../../shared/components/table/Table';
@@ -10,7 +14,6 @@ import { RoutesEnum } from '../../../shared/enums/route.enum';
 import { convertMoney } from '../../../shared/functions/money';
 import { AddressType } from '../../../shared/types/AddressType';
 import { CartProductsType } from '../../../shared/types/CartProductType';
-import { useAddressReducer } from '../../../store/reducers/addressReducer/useAddressReducer';
 import { useGlobalReducer } from '../../../store/reducers/globalReducer/useGlobalReducer';
 import { useCart } from '../hooks/useCart';
 import {
@@ -21,18 +24,20 @@ import {
 } from '../styles/cart.style';
 
 export const Cart = () => {
-  const { cart, loading, paymentTest, freteCalc } = useCart();
-  const { setNotification, user } = useGlobalReducer();
+  const { cart, loading, address, paymentTest, user, handleChangeSelect } = useCart();
+  const { setNotification } = useGlobalReducer();
   const navigate = useNavigate();
-  const { address } = useAddressReducer();
+
   let acc = 0;
 
   useEffect(() => {
-    if (!user) {
+    if (user) {
+      //
+    } else {
       setNotification('error', 'Faça login para continuar');
       navigate(RoutesEnum.LOGIN);
     }
-  }, []);
+  }, [user]);
 
   const columns: TableProps<CartProductsType>['columns'] = useMemo(
     () => [
@@ -40,15 +45,15 @@ export const Cart = () => {
         title: '',
         dataIndex: 'id',
         key: 'id',
-        width: 200,
+        width: 100,
         render: (_, cartProduct) => (
           <a>
             <ThumbnailImage
               style={{
-                height: '120px',
-                width: '150px',
-                maxHeight: '150px',
-                maxWidth: '150px',
+                height: '100px',
+                width: '100px',
+                maxHeight: '100px',
+                maxWidth: '100px',
               }}
               src={cartProduct.product?.image}
             />
@@ -59,6 +64,7 @@ export const Cart = () => {
         title: 'Descrição',
         dataIndex: 'product',
         key: 'product',
+        width: 200,
         render: (_, cartProduct) => (
           <ContainerDescriptions>
             <span>Produto: {cartProduct.product?.name}</span>
@@ -69,6 +75,7 @@ export const Cart = () => {
         title: 'Preço',
         dataIndex: 'price',
         key: 'price',
+        width: 100,
         render: (_, cartProduct) => (
           <ContainerDescriptions>
             <a>{cartProduct.product?.price && convertMoney(cartProduct.product?.price)}</a>
@@ -76,9 +83,10 @@ export const Cart = () => {
         ),
       },
       {
-        title: 'Quantidade',
+        title: 'Qtd',
         dataIndex: 'amount',
         key: 'amount',
+        width: 50,
         render: (_, cartProduct) => (
           <ContainerDescriptions>
             <a style={{ textAlign: 'center', color: 'black', fontWeight: 'bold' }}>
@@ -91,6 +99,7 @@ export const Cart = () => {
         title: 'Preço',
         dataIndex: 'price',
         key: 'price',
+        width: 100,
         render: (_, cartProduct) => {
           const priceTotalItem = cartProduct.product
             ? cartProduct.product?.price * cartProduct.amount
@@ -128,35 +137,110 @@ export const Cart = () => {
               columns={columns}
               dataSource={cart?.cartProducts}
               rowKey={'id'}
+              pagination={{ position: ['none', 'none'] }}
             />
             <AreaPayment>
-              <div style={{ padding: '20px', margin: '20px' }}>
-                Valor dos Produtos: {acc.toFixed(2)}
+              <div
+                style={{
+                  margin: '20px',
+                  background: 'white',
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  border: 'solid 1px purple',
+                  borderRadius: '8px',
+                }}
+              >
+                <p>Valor dos Produtos: </p>
+                <p>{convertMoney(acc)}</p>
               </div>
-              <div style={{ padding: '20px', margin: '20px' }}>
+              <div style={{ padding: '20px' }}>
                 Endereço de Entrega:
                 <Select
-                  style={{ width: '300px', height: '100px', marginBottom: '8px' }}
+                  style={{
+                    width: '100%',
+                    height: '100px',
+                    border: 'solid 1px purple',
+                    borderRadius: '8px',
+                  }}
                   options={
                     address &&
                     address.map((address: AddressType) => ({
                       value: `${address.id}`,
                       label: (
-                        <>
+                        <div style={{ fontSize: '14px', maxWidth: '30px' }}>
                           CEP: {address.cep}
                           <br />
                           {address.city?.name}/{address.city?.state?.name}
                           <br />
                           {address.complement}/{address.numberAddress}
-                        </>
+                        </div>
                       ),
                     }))
                   }
-                  onChange={() => freteCalc()}
+                  onChange={handleChangeSelect}
                 />
               </div>
-              <div style={{ padding: '20px', margin: '20px' }}>Frete: 0.00</div>
-              <Button onClick={() => paymentTest()}>PAGAMENTO TESTE</Button>
+              <DisplayFlexEvenly>
+                <button
+                  onClick={() => console.log('pac')}
+                  style={{
+                    margin: '5px',
+                    padding: '5px',
+                    background: 'white',
+                    border: 'solid 1px purple',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <DisplayFlexEvenly>
+                    <p>PAC</p>
+                  </DisplayFlexEvenly>
+
+                  <div>Valor: R$ 30,00</div>
+                  <div>Prazo: 6 dias úteis</div>
+                </button>
+                <button
+                  onClick={() => console.log('sedex')}
+                  style={{
+                    margin: '5px',
+                    padding: '5px',
+                    background: 'white',
+                    border: 'solid 1px purple',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <DisplayFlexEvenly>
+                    <p>SEDEX</p>
+                  </DisplayFlexEvenly>
+
+                  <div>Valor: R$ 50,00</div>
+                  <div>Prazo: 3 dias úteis</div>
+                </button>
+              </DisplayFlexEvenly>
+
+              <div
+                style={{
+                  margin: '20px',
+                  background: 'white',
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  border: 'solid 1px purple',
+                  borderRadius: '8px',
+                }}
+              >
+                <p>Valor dos Produtos: </p>
+                <p>{convertMoney(acc)}</p>
+              </div>
+              <DisplayFlexCenter>
+                <Button
+                  type="primary"
+                  onClick={() => paymentTest()}
+                  style={{ marginBottom: '20px' }}
+                >
+                  PAGAMENTO TESTE
+                </Button>
+              </DisplayFlexCenter>
             </AreaPayment>
           </DividerCart>
         )}

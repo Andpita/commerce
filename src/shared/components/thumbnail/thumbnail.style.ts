@@ -11,7 +11,9 @@ export const ThumbnailContainer = styled.div<ThumbnailProps>`
   margin: ${(props) => props.margin || '0px'};
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: lightblue;
+  color: black;
+  font-weight: 700;
 `;
 
 export const AreaImage = styled.div`
@@ -32,6 +34,7 @@ export const ThumbnailImage = styled.img`
 `;
 
 export const AreaData = styled.div`
+  align-items: center;
   padding: 5px;
   display: flex;
   flex-direction: column;

@@ -25,7 +25,6 @@ export const ChangePassword = () => {
           }}
         >
           <LimitedContainer
-            width={600}
             style={{ background: '#8ECAE6', borderRadius: '10px', padding: '20px' }}
           >
             <TitleProfile>ALTERAR SENHA</TitleProfile>

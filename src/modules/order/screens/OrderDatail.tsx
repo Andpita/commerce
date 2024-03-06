@@ -1,10 +1,10 @@
 import { Badge, Descriptions, DescriptionsProps, Divider } from 'antd';
 import { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
+import Loading from '../../../shared/components/loading/Loading';
 import { Screen } from '../../../shared/components/screen/Screen';
 import ListOrderProduct from '../../../shared/components/table/listProducts';
-import { RoutesEnum } from '../../../shared/enums/route.enum';
 import { cepMask } from '../../../shared/functions/cepMask';
 import { cpfMask } from '../../../shared/functions/cpfMask';
 import { dataModify, hourModify } from '../../../shared/functions/dateFunctions';
@@ -15,15 +15,10 @@ import { useOrderDatails } from '../hooks/useOrderDatail';
 
 export const OrderDetail = () => {
   const { orderId } = useParams();
-  const { orderById } = useOrderDatails(orderId);
+  const { orderById, loading } = useOrderDatails(orderId);
   const { user } = useGlobalReducer();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!orderById) {
-      navigate(RoutesEnum.ORDER);
-    }
-  }, [orderId]);
+  useEffect(() => {}, []);
 
   const userData: DescriptionsProps['items'] = [
     {
@@ -135,13 +130,17 @@ export const OrderDetail = () => {
 
   return (
     <Screen>
-      <div style={{ width: '90%' }}>
-        <Descriptions title="Detalhes Usuário" bordered items={userData} key={'user.id'} />;
-        <Divider />
-        <Descriptions title="Detalhes Pagamento" bordered items={payment} />;
-        <Divider />
-        <ListOrderProduct ordersProduct={orderById?.orderProduct} key={'productId'} />
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div style={{ width: '90%' }}>
+          <Descriptions title="Detalhes Usuário" bordered items={userData} key={'user.id'} />
+          <Divider />
+          <Descriptions title="Detalhes Pagamento" bordered items={payment} />
+          <Divider />
+          <ListOrderProduct ordersProduct={orderById?.orderProduct} key={'productId'} />
+        </div>
+      )}
     </Screen>
   );
 };
