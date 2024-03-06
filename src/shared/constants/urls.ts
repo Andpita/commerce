@@ -21,5 +21,6 @@ export const URL_ADDRESS = 'http://localhost:4003/address';
 
 export const URL_STATE = 'http://localhost:4003/state';
 export const URL_CITY = 'http://localhost:4003/city/{id}';
+export const URL_CEP = 'http://localhost:4003/correios/{id}';
 
 export const FRETE_CALC = 'https://portal.kangu.com.br/tms/transporte/simular';

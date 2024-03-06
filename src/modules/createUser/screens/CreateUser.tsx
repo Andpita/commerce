@@ -67,21 +67,18 @@ export const CreateUser = () => {
             />
           </form>
           <DisplayFlexEvenly>
-            <LimitedContainer width={120}>
-              <Button
-                disabled={disableButton}
-                loading={loading}
-                onClick={handleSubmit}
-                type="primary"
-              >
-                Criar Usuário
-              </Button>
-            </LimitedContainer>
-            <LimitedContainer width={120}>
-              <Button danger type="primary" onClick={handleClickcancel}>
-                Cancelar
-              </Button>
-            </LimitedContainer>
+            <Button
+              margin="10px"
+              disabled={disableButton}
+              loading={loading}
+              onClick={handleSubmit}
+              type="primary"
+            >
+              Criar Usuário
+            </Button>
+            <Button margin="10px" danger type="primary" onClick={handleClickcancel}>
+              Cancelar
+            </Button>
           </DisplayFlexEvenly>
         </LimitedContainer>
       </DisplayFlexCenter>

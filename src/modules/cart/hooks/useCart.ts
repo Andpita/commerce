@@ -20,6 +20,7 @@ export const useCart = () => {
     addressId: 0,
     delivery: '',
   });
+  const [disabledButton, setDisabledButton] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -30,10 +31,18 @@ export const useCart = () => {
   }, [user]);
 
   useEffect(() => {
-    if (!address || address.length === 0) {
+    if ((!address || address.length === 0) && user) {
       request(URL_ADDRESS, MethodsEnum.GET, setAddress);
     }
   }, [user]);
+
+  useEffect(() => {
+    if (paymentData.addressId === 0) {
+      setDisabledButton(true);
+    } else {
+      setDisabledButton(false);
+    }
+  }, [paymentData]);
 
   const paymentTest = async () => {
     await request(URL_PAYMENTS, MethodsEnum.POST, undefined, paymentData, 'Processando Pagamento');
@@ -55,5 +64,6 @@ export const useCart = () => {
     paymentTest,
     user,
     handleChangeSelect,
+    disabledButton,
   };
 };

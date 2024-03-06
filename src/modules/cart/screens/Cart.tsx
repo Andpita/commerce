@@ -2,10 +2,8 @@ import { Button, Select, TableProps } from 'antd';
 import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {
-  DisplayFlexCenter,
-  DisplayFlexEvenly,
-} from '../../../shared/components/displays/display.styled';
+import { LimitedContainer } from '../../../shared/components/containers/limitedContainers.styled';
+import { DisplayFlexCenter } from '../../../shared/components/displays/display.styled';
 import Loading from '../../../shared/components/loading/Loading';
 import { Screen } from '../../../shared/components/screen/Screen';
 import Table from '../../../shared/components/table/Table';
@@ -20,11 +18,14 @@ import {
   AreaPayment,
   CartContainer,
   ContainerDescriptions,
+  ContainerValue,
   DividerCart,
+  SelectDelivery,
 } from '../styles/cart.style';
 
 export const Cart = () => {
-  const { cart, loading, address, paymentTest, user, handleChangeSelect } = useCart();
+  const { cart, loading, address, paymentTest, user, handleChangeSelect, disabledButton } =
+    useCart();
   const { setNotification } = useGlobalReducer();
   const navigate = useNavigate();
 
@@ -133,27 +134,19 @@ export const Cart = () => {
         ) : (
           <DividerCart>
             <Table
-              style={{ width: '100%', minWidth: '60%' }}
+              style={{ width: '100%', minWidth: '60%', height: '550px', background: 'white' }}
               columns={columns}
               dataSource={cart?.cartProducts}
               rowKey={'id'}
               pagination={{ position: ['none', 'none'] }}
             />
             <AreaPayment>
-              <div
-                style={{
-                  margin: '20px',
-                  background: 'white',
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  border: 'solid 1px purple',
-                  borderRadius: '8px',
-                }}
-              >
+              <ContainerValue>
                 <p>Valor dos Produtos: </p>
                 <p>{convertMoney(acc)}</p>
-              </div>
-              <div style={{ padding: '20px' }}>
+              </ContainerValue>
+
+              <div style={{ padding: '10px' }}>
                 Endereço de Entrega:
                 <Select
                   style={{
@@ -167,7 +160,7 @@ export const Cart = () => {
                     address.map((address: AddressType) => ({
                       value: `${address.id}`,
                       label: (
-                        <div style={{ fontSize: '14px', maxWidth: '30px' }}>
+                        <div style={{ fontSize: '14px', maxWidth: '1px' }}>
                           CEP: {address.cep}
                           <br />
                           {address.city?.name}/{address.city?.state?.name}
@@ -180,63 +173,47 @@ export const Cart = () => {
                   onChange={handleChangeSelect}
                 />
               </div>
-              <DisplayFlexEvenly>
-                <button
-                  onClick={() => console.log('pac')}
-                  style={{
-                    margin: '5px',
-                    padding: '5px',
-                    background: 'white',
-                    border: 'solid 1px purple',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <DisplayFlexEvenly>
-                    <p>PAC</p>
-                  </DisplayFlexEvenly>
 
-                  <div>Valor: R$ 30,00</div>
-                  <div>Prazo: 6 dias úteis</div>
-                </button>
-                <button
-                  onClick={() => console.log('sedex')}
-                  style={{
-                    margin: '5px',
-                    padding: '5px',
-                    background: 'white',
-                    border: 'solid 1px purple',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <DisplayFlexEvenly>
-                    <p>SEDEX</p>
-                  </DisplayFlexEvenly>
+              <LimitedContainer style={{ padding: '10px' }}>
+                <SelectDelivery onClick={() => console.log('pac')}>
+                  <div>PAC</div>
+                  <div>
+                    <div style={{ display: 'block' }}>
+                      <div>Valor: </div>
+                      <div>R$ 30,00</div>
+                    </div>
+                    <div style={{ display: 'block' }}>
+                      <div>Prazo: </div>
+                      <div>6 dias úteis</div>
+                    </div>
+                  </div>
+                </SelectDelivery>
+                <SelectDelivery onClick={() => console.log('sedex')} style={{}}>
+                  <div>SEDEX</div>
+                  <div>
+                    <div style={{ display: 'block' }}>
+                      <div>Valor: </div>
+                      <div>R$ 50,00</div>
+                    </div>
+                    <div style={{ display: 'block' }}>
+                      <div>Prazo: </div>
+                      <div>3 dias úteis</div>
+                    </div>
+                  </div>
+                </SelectDelivery>
+              </LimitedContainer>
 
-                  <div>Valor: R$ 50,00</div>
-                  <div>Prazo: 3 dias úteis</div>
-                </button>
-              </DisplayFlexEvenly>
-
-              <div
-                style={{
-                  margin: '20px',
-                  background: 'white',
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  border: 'solid 1px purple',
-                  borderRadius: '8px',
-                }}
-              >
+              <ContainerValue>
                 <p>Valor dos Produtos: </p>
                 <p>{convertMoney(acc)}</p>
-              </div>
+              </ContainerValue>
+
               <DisplayFlexCenter>
                 <Button
                   type="primary"
                   onClick={() => paymentTest()}
                   style={{ marginBottom: '20px' }}
+                  disabled={disabledButton}
                 >
                   PAGAMENTO TESTE
                 </Button>

@@ -1,6 +1,8 @@
 import { Typography } from 'antd';
 import styled from 'styled-components';
 
+import { ColorsEnum } from '../../../shared/enums/colors.enum';
+
 const { Title } = Typography;
 
 export const DivLogin = styled.div`
@@ -19,7 +21,7 @@ export const BackgroundImage = styled.img`
 `;
 
 export const TitleLogin = styled(Title)`
-  color: #005544 !important;
+  color: ${ColorsEnum.Dark} !important;
 `;
 
 export const LogoImage = styled.img`
@@ -29,7 +31,7 @@ export const LogoImage = styled.img`
 export const ContainerLogin = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: lightcyan;
+  background-color: ${ColorsEnum.Light};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,5 +44,7 @@ export const SubContainer = styled.div`
   width: 100%;
   max-width: 400px;
   flex-direction: column;
-  padding: 0px 20px 0px 20px;
+  padding: 40px;
+  background-color: white;
+  border-radius: 20px;
 `;

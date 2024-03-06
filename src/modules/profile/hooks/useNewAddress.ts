@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { URL_ADDRESS, URL_CITY, URL_STATE } from '../../../shared/constants/urls';
+import { URL_ADDRESS, URL_CEP } from '../../../shared/constants/urls';
 import { AddressDTO } from '../../../shared/dto/address.dto';
 import { MethodsEnum } from '../../../shared/enums/methods.enum';
 import { RoutesEnum } from '../../../shared/enums/route.enum';
+import { cepMask } from '../../../shared/functions/cepMask';
 import { useRequest } from '../../../shared/hooks/useRequest';
+import { CepDetails } from '../../../shared/types/CepTypeCorreios';
 
 export const useNewAddress = () => {
   const navigate = useNavigate();
@@ -13,14 +15,22 @@ export const useNewAddress = () => {
     complement: '',
     numberAddress: '',
     cep: '',
-    cityId: '',
+    cityId: 0,
   });
 
   const [disableButton, setDisableButton] = useState(true);
   const { request, loading } = useRequest();
-  const [listState, setListState] = useState([]);
-  const [listCities, setListCities] = useState([]);
-  const [idState, setIdState] = useState(1);
+  const [localCEP, setLocalCEP] = useState<CepDetails>({
+    cep: '',
+    publicPlace: '',
+    complement: '',
+    neigborhood: '',
+    city: '',
+    uf: '',
+    ddd: '',
+    cityId: 0,
+    stateId: 0,
+  });
 
   useEffect(() => {
     if (newAddress.complement && newAddress.numberAddress && newAddress.cep && newAddress.cityId) {
@@ -31,14 +41,14 @@ export const useNewAddress = () => {
   }, [newAddress]);
 
   useEffect(() => {
-    states();
+    const cep = cepMask(newAddress.cep);
 
-    if (!idState) {
-      setListCities([]);
+    if (cep && cep.length === 9) {
+      dataCep(cep);
     } else {
-      cities(idState);
+      return;
     }
-  }, [idState]);
+  }, [newAddress.cep]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
     setNewAddress({
@@ -47,49 +57,24 @@ export const useNewAddress = () => {
     });
   };
 
+  const dataCep = async (cep: string) => {
+    request(URL_CEP.replace('{id}', `${cep}`), MethodsEnum.GET, setLocalCEP);
+  };
+
   const handleClickcancel = () => {
     navigate(RoutesEnum.HOME);
   };
 
   const handleSubmit = async () => {
     const address = { ...newAddress };
-    setNewAddress({
-      ...address,
-      numberAddress: +address.numberAddress,
-      cityId: +address.cityId,
-    });
 
     await request(
       URL_ADDRESS,
       MethodsEnum.POST,
       undefined,
-      newAddress,
+      { ...address, numberAddress: +address.numberAddress, cityId: +localCEP.cityId },
       'Endereço adicionado com sucesso!',
     );
-  };
-
-  const states = async () => {
-    await request(URL_STATE, MethodsEnum.GET, setListState);
-  };
-
-  const cities = async (stateId: number) => {
-    await request(URL_CITY.replace('{id}', `${stateId}`), MethodsEnum.GET, setListCities);
-  };
-
-  const handleChangeCity = (value: string) => {
-    setNewAddress({
-      ...newAddress,
-      cityId: value,
-    });
-  };
-
-  const handleChangeState = (value: number) => {
-    setIdState(value);
-
-    setNewAddress({
-      ...newAddress,
-      cityId: '',
-    });
   };
 
   return {
@@ -100,9 +85,7 @@ export const useNewAddress = () => {
     handleSubmit,
     loading,
 
-    listState,
-    listCities,
-    handleChangeCity,
-    handleChangeState,
+    localCEP,
+    dataCep,
   };
 };

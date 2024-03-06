@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { ColorsEnum } from '../../enums/colors.enum';
+
 export const BoxButton = styled.div`
   display: flex;
   justify-content: space-between;
@@ -8,7 +10,7 @@ export const BoxButton = styled.div`
 `;
 
 export const BoxButtonLateral = styled.div`
-  background-color: #8ecae6;
+  background-color: ${ColorsEnum.Primary};
   border-radius: 10px;
   display: flex;
   flex-direction: column;

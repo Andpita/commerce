@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+import { ColorsEnum } from '../../enums/colors.enum';
+
 export const ContainerHeader = styled.div`
-  background: #219ebc;
+  background: ${ColorsEnum.Primary};
 
   margin-left: auto;
-  height: 200px;
+  height: 170px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -48,5 +50,5 @@ export const Title = styled.h1`
   font-weight: bold;
   font-style: italic;
   font-size: 40px;
-  color: #023047;
+  color: ${ColorsEnum.Dark};
 `;

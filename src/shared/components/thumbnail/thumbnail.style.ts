@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { ColorsEnum } from '../../enums/colors.enum';
+
 interface ThumbnailProps {
   margin?: string;
 }
@@ -11,8 +13,8 @@ export const ThumbnailContainer = styled.div<ThumbnailProps>`
   margin: ${(props) => props.margin || '0px'};
   display: flex;
   flex-direction: column;
-  background-color: lightblue;
-  color: black;
+  background-color: ${ColorsEnum.Light};
+  color: ${ColorsEnum.Dark};
   font-weight: 700;
 `;
 

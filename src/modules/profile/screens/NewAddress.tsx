@@ -6,8 +6,6 @@ import { DisplayFlexEvenly } from '../../../shared/components/displays/display.s
 import { InputDefault } from '../../../shared/components/inputs/InputDefault';
 import { MenuProfile } from '../../../shared/components/menu/MenuProfile';
 import { Screen } from '../../../shared/components/screen/Screen';
-import { CityType } from '../../../shared/types/CityType';
-import { StateType } from '../../../shared/types/StateType';
 import { useNewAddress } from '../hooks/useNewAddress';
 import { FormDefault, TitleProfile } from '../styles/profile.style';
 
@@ -19,10 +17,7 @@ export const NewAddress = () => {
     handleChange,
     handleSubmit,
     loading,
-    listState,
-    listCities,
-    handleChangeState,
-    handleChangeCity,
+    localCEP,
   } = useNewAddress();
   return (
     <Screen>
@@ -65,7 +60,7 @@ export const NewAddress = () => {
               <InputDefault
                 disabled
                 onChange={(e) => handleChange(e, 'cityId')}
-                value={newAddress.cityId}
+                value={localCEP.cityId}
                 title="City Id"
                 placeholder=""
                 autoComplete="current-cpf"
@@ -73,23 +68,34 @@ export const NewAddress = () => {
               />
               <div style={{ display: 'flex' }}>
                 <Select
+                  disabled
+                  defaultValue="Estado"
                   title="Estado"
-                  style={{ width: '70%', marginBottom: '8px' }}
-                  onChange={handleChangeState}
-                  options={listState.map((state: StateType) => ({
-                    value: `${state.id}`,
-                    label: `${state.name}`,
-                  }))}
+                  style={{ width: '70%', margin: '8px' }}
+                  value={localCEP.uf || ''}
                 />
                 <Select
+                  disabled
                   title="Cidade"
                   loading={loading}
-                  style={{ width: '100%', marginBottom: '8px' }}
-                  onChange={handleChangeCity}
-                  options={listCities.map((city: CityType) => ({
-                    value: `${city.id}`,
-                    label: `${city.name}`,
-                  }))}
+                  style={{ width: '100%', margin: '8px' }}
+                  value={localCEP.city || ''}
+                />
+              </div>{' '}
+              <div style={{ display: 'flex' }}>
+                <Select
+                  disabled
+                  title="Bairro"
+                  loading={loading}
+                  style={{ width: '100%', margin: '8px' }}
+                  value={localCEP.neigborhood || ''}
+                />
+                <Select
+                  disabled
+                  title="Rua"
+                  loading={loading}
+                  style={{ width: '100%', margin: '8px' }}
+                  value={localCEP.publicPlace || ''}
                 />
               </div>
             </FormDefault>
