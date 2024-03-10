@@ -13,6 +13,9 @@ export const useCategory = () => {
   const { request } = useRequest();
   const [categoriesFiltered, setCategoriesFiltered] = useState(categories);
   const navigate = useNavigate();
+  const [productForCategory, setProductForCategory] = useState({
+    product: [],
+  });
 
   useEffect(() => {
     request(URL_CATEGORY, MethodsEnum.GET, setCategories);
@@ -56,11 +59,21 @@ export const useCategory = () => {
     return null;
   };
 
+  const filterCategoryId = async (categoryId: number) => {
+    await request(
+      URL_CATEGORY_ID.replace('{id}', `${categoryId}`),
+      MethodsEnum.GET,
+      setProductForCategory,
+    );
+  };
+
   return {
     categories: categoriesFiltered,
     handleSearchCategory,
     handleCategoryInsert,
     handleEditCategory,
     handleDeleteCategory,
+    productForCategory,
+    filterCategoryId,
   };
 };

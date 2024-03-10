@@ -10,7 +10,6 @@ export const ThumbnailContainer = styled.div<ThumbnailProps>`
   height: 300px;
   width: 200px;
   border-radius: 5px;
-  margin: ${(props) => props.margin || '0px'};
   display: flex;
   flex-direction: column;
   background-color: ${ColorsEnum.Light};
