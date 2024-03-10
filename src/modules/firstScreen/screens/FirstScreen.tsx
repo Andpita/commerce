@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 
-import { DisplayFlexCenter } from '../../../shared/components/displays/display.styled';
+import { DisplayFlexEvenly } from '../../../shared/components/displays/display.styled';
 import { Screen } from '../../../shared/components/screen/Screen';
 import { ColorsEnum } from '../../../shared/enums/colors.enum';
 import { useGlobalReducer } from '../../../store/reducers/globalReducer/useGlobalReducer';
+import { ContainerHome, ContainerLoren } from '../styles/firstScreen.style';
 
 export const FirstScreen = () => {
   const { user } = useGlobalReducer();
@@ -12,13 +13,7 @@ export const FirstScreen = () => {
 
   return (
     <Screen>
-      <div
-        style={{
-          margin: 'auto auto',
-          padding: '20px',
-          gap: '20px',
-        }}
-      >
+      <ContainerHome>
         <div style={{ textAlign: 'center' }}>
           <h2>BEM VINDO A GAG STORE!</h2>
         </div>
@@ -35,27 +30,28 @@ export const FirstScreen = () => {
           <img src="./capa.jpg" style={{ maxWidth: '50%', margin: 'auto auto' }} />
           <div style={{ width: '100%', background: ColorsEnum.Light, zIndex: 2 }}></div>
         </div>
-        <DisplayFlexCenter>
-          <div>
+
+        <DisplayFlexEvenly>
+          <ContainerLoren>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis sit laudantium
             reprehenderit necessitatibus delectus cumque vero, eius rerum modi laboriosam itaque
             eaque
-          </div>
-          <div>
+          </ContainerLoren>
+          <ContainerLoren>
             rem expedita soluta ab pariatur architecto. A blanditiis porro asperiores nobis.
             Repellendus quaerat sit ad earum distinctio cupiditate ex quae, cum aliquam dolore porro
             dolorem eveniet voluptatibus necessitatibus maxime delectus ab veritatis dolores quidem
-          </div>
-          <div>
+          </ContainerLoren>
+          <ContainerLoren>
             libero, quas animi tenetur dicta in. Magnam harum voluptate molestias provident iste
             totam ut pariatur praesentium qui laboriosam illum quod deserunt doloribus maiores eius
-          </div>
-          <div>
+          </ContainerLoren>
+          <ContainerLoren>
             voluptates facilis esse, voluptatum debitis omnis dolores? Odio, possimus ad! Commodi
             dolores nostrum quasi reiciendis adipisci, perferendis ex quibusdam officiis.
-          </div>
-        </DisplayFlexCenter>
-      </div>
+          </ContainerLoren>
+        </DisplayFlexEvenly>
+      </ContainerHome>
     </Screen>
   );
 };

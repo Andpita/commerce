@@ -7,16 +7,12 @@ import { AreaData, AreaImage, ThumbnailContainer, ThumbnailImage } from './thumb
 
 interface ProductThumbnail {
   product: ProductType;
-  margin?: string;
 }
 
-export const Thumbnail = ({ product, margin }: ProductThumbnail) => {
+export const Thumbnail = ({ product }: ProductThumbnail) => {
   const navigate = useNavigate();
   return (
-    <ThumbnailContainer
-      margin={margin}
-      onClick={() => navigate(`${RoutesEnum.PRODUCT}/${product.id}`)}
-    >
+    <ThumbnailContainer onClick={() => navigate(`${RoutesEnum.PRODUCT}/${product.id}`)}>
       <AreaImage>
         <ThumbnailImage src={product.image} />
       </AreaImage>

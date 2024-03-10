@@ -12,4 +12,12 @@ export const FooterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-size: 20px;
+`;
+
+export const LinkFooter = styled.a`
+  color: white;
+  outline: none;
 `;

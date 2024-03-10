@@ -54,7 +54,6 @@ export const useCart = () => {
       ...paymentData,
       addressId: +value,
     });
-    console.log(paymentData);
   };
 
   return {

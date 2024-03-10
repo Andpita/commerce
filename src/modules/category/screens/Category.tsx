@@ -4,7 +4,11 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { BoxButton } from '../../../shared/components/box/box.styled';
 import { LimitedContainer } from '../../../shared/components/containers/limitedContainers.styled';
-import { DisplayFlexEvenly } from '../../../shared/components/displays/display.styled';
+import {
+  DisplayFlexCenterCustom,
+  DisplayFlexEvenly,
+} from '../../../shared/components/displays/display.styled';
+import Loading from '../../../shared/components/loading/Loading';
 import { Screen } from '../../../shared/components/screen/Screen';
 import Table from '../../../shared/components/table/Table';
 import { Thumbnail } from '../../../shared/components/thumbnail/thumbnail';
@@ -14,7 +18,8 @@ import { ProductArea } from '../../product/styles/product.style';
 import { useCategory } from '../hooks/useCategory';
 
 export const Category = () => {
-  const { categories, handleSearchCategory, productForCategory, filterCategoryId } = useCategory();
+  const { categories, handleSearchCategory, productForCategory, filterCategoryId, loading } =
+    useCategory();
   const [idCategory, setIdCategory] = useState(0);
 
   useEffect(() => {}, [idCategory]);
@@ -64,7 +69,6 @@ export const Category = () => {
                 onClick: () => {
                   setIdCategory(record.id);
                   filterCategoryId(record.id);
-                  console.log(record.id);
                 },
               })}
               columns={columns}
@@ -72,13 +76,20 @@ export const Category = () => {
               rowKey={'id'}
             />
           </div>
-          <div style={{ width: '70%' }}>
-            <ProductArea>
-              {productForCategory?.product?.map((product: ProductType) => (
-                <Thumbnail margin="5px" key={product.id} product={product} />
-              ))}
-            </ProductArea>
-          </div>
+
+          {loading ? (
+            <DisplayFlexCenterCustom>
+              <Loading size="large" />
+            </DisplayFlexCenterCustom>
+          ) : (
+            <div style={{ width: '70%' }}>
+              <ProductArea>
+                {productForCategory?.product?.map((product: ProductType) => (
+                  <Thumbnail key={product.id} product={product} />
+                ))}
+              </ProductArea>
+            </div>
+          )}
         </DisplayFlexEvenly>
       </div>
     </Screen>

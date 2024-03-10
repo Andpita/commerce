@@ -20,7 +20,7 @@ export const Product = () => {
         ) : (
           <ProductArea>
             {products.map((product) => (
-              <Thumbnail margin="5px" key={product.id} product={product} />
+              <Thumbnail key={product.id} product={product} />
             ))}
           </ProductArea>
         )}

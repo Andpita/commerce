@@ -10,7 +10,7 @@ import { useCategoryReducer } from '../../../store/reducers/categoryReducer/useC
 
 export const useCategory = () => {
   const { categories, setCategories } = useCategoryReducer();
-  const { request } = useRequest();
+  const { request, loading } = useRequest();
   const [categoriesFiltered, setCategoriesFiltered] = useState(categories);
   const navigate = useNavigate();
   const [productForCategory, setProductForCategory] = useState({
@@ -75,5 +75,6 @@ export const useCategory = () => {
     handleDeleteCategory,
     productForCategory,
     filterCategoryId,
+    loading,
   };
 };
