@@ -9,6 +9,7 @@ export const ScreenContainer = styled.div`
   justify-content: center;
   margin-top: 30px;
   background-color: aliceblue;
+  min-height: 70vh;
 
   width: 100%;
 `;

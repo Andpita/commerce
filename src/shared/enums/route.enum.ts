@@ -21,5 +21,7 @@ export enum RoutesEnum {
   USER_ALL = '/user/all',
   USER_INSERT_ADM = '/user/admin',
 
+  TICKET = '/ticket',
+
   CART = '/cart',
 }

@@ -58,7 +58,19 @@ export const useNewAddress = () => {
   };
 
   const dataCep = async (cep: string) => {
-    request(URL_CEP.replace('{id}', `${cep}`), MethodsEnum.GET, setLocalCEP);
+    await request(URL_CEP.replace('{id}', `${cep}`), MethodsEnum.GET, setLocalCEP);
+
+    if (localCEP.cityId) {
+      setNewAddress({
+        ...newAddress,
+        cityId: localCEP.cityId,
+      });
+    } else {
+      setNewAddress({
+        ...newAddress,
+        cityId: 0,
+      });
+    }
   };
 
   const handleClickcancel = () => {

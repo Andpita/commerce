@@ -36,6 +36,7 @@ export const Cart = () => {
       //
     } else {
       setNotification('error', 'Faça login para continuar');
+      navigate(RoutesEnum.HOME);
       navigate(RoutesEnum.LOGIN);
     }
   }, [user]);
@@ -130,7 +131,9 @@ export const Cart = () => {
     <Screen>
       <CartContainer>
         {loading ? (
-          <Loading />
+          <DisplayFlexCenter>
+            <Loading size="large" />
+          </DisplayFlexCenter>
         ) : (
           <DividerCart>
             <Table

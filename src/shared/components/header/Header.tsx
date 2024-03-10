@@ -34,7 +34,7 @@ export const Header = () => {
             <Button
               icon={<MailOutlined />}
               style={{ height: '50px', margin: '10px', width: '120px', borderRadius: '40px' }}
-              onClick={() => console.log('')}
+              onClick={() => navigate(RoutesEnum.TICKET)}
             >
               Contato
             </Button>

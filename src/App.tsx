@@ -11,6 +11,7 @@ import { OffersRoutes } from './modules/offer/routes';
 import { OrderRoutes } from './modules/order/routes';
 import { ProductRoutes } from './modules/product/routes';
 import { ProfileRoutes } from './modules/profile/routes';
+import { TicketRoutes } from './modules/ticket/routes';
 import { URL_USER } from './shared/constants/urls';
 import { MethodsEnum } from './shared/enums/methods.enum';
 import { getAuthorizationToken } from './shared/functions/connections/auth';
@@ -23,6 +24,7 @@ const openRoutes: RouteObject[] = [
   ...ProductRoutes,
   ...CategoryRoutes,
   ...CreateUserRoutes,
+  ...TicketRoutes,
 ];
 const privateRoutes: RouteObject[] = [
   ...FirstScreenRoutes,

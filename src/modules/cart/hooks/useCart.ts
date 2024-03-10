@@ -24,7 +24,7 @@ export const useCart = () => {
 
   useEffect(() => {
     if (!user) {
-      console.log('sem user', user);
+      return;
     } else {
       request<CartType>(URL_CART, MethodsEnum.GET, setCart);
     }

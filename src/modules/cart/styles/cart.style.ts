@@ -46,11 +46,11 @@ export const SelectDelivery = styled.button`
   }
 
   &:active {
-    background-color: red;
+    background-color: lightblue;
   }
 
   &:focus {
-    background-color: red;
+    background-color: lightblue;
   }
 
   div {

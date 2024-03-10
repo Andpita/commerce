@@ -34,17 +34,11 @@ export const LoginScreen = () => {
         />
 
         <DisplayFlexCenter>
-          <Button
-            width="100px"
-            loading={loading}
-            margin="15px"
-            onClick={() => navigate(RoutesEnum.PRODUCT)}
-            danger
-          >
+          <Button width="120px" margin="15px" onClick={() => navigate(RoutesEnum.PRODUCT)} danger>
             Voltar
           </Button>
           <Button
-            width="100px"
+            width="120px"
             loading={loading}
             margin="15px"
             type="primary"
