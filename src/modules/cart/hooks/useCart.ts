@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { URL_ADDRESS, URL_CART, URL_PAYMENTS } from '../../../shared/constants/urls';
 import { MethodsEnum } from '../../../shared/enums/methods.enum';
+import { RoutesEnum } from '../../../shared/enums/route.enum';
 import { dateGeneration } from '../../../shared/functions/dateFunctions';
 import { useRequest } from '../../../shared/hooks/useRequest';
 import { CartType } from '../../../shared/types/CartType';
@@ -21,6 +23,7 @@ export const useCart = () => {
     delivery: '',
   });
   const [disabledButton, setDisabledButton] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) {
@@ -47,6 +50,7 @@ export const useCart = () => {
   const paymentTest = async () => {
     await request(URL_PAYMENTS, MethodsEnum.POST, undefined, paymentData, 'Processando Pagamento');
     setCart(undefined);
+    navigate(RoutesEnum.ORDER);
   };
 
   const handleChangeSelect = (value: string) => {

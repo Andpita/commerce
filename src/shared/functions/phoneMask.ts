@@ -1,6 +1,6 @@
 export const phoneMask = (phone: string | undefined) => {
   if (!phone) {
-    return '(00)00000000';
+    return;
   }
 
   const noMask = phone.replace(/\D/g, '');

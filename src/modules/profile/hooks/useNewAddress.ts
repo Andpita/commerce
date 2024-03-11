@@ -50,17 +50,8 @@ export const useNewAddress = () => {
     }
   }, [newAddress.cep]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
-    setNewAddress({
-      ...newAddress,
-      [key]: event.target.value,
-    });
-  };
-
-  const dataCep = async (cep: string) => {
-    await request(URL_CEP.replace('{id}', `${cep}`), MethodsEnum.GET, setLocalCEP);
-
-    if (localCEP.cityId) {
+  useEffect(() => {
+    if (localCEP.cityId && localCEP.cityId !== 1) {
       setNewAddress({
         ...newAddress,
         cityId: localCEP.cityId,
@@ -71,6 +62,17 @@ export const useNewAddress = () => {
         cityId: 0,
       });
     }
+  }, [localCEP]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
+    setNewAddress({
+      ...newAddress,
+      [key]: event.target.value,
+    });
+  };
+
+  const dataCep = async (cep: string) => {
+    await request(URL_CEP.replace('{id}', `${cep}`), MethodsEnum.GET, setLocalCEP);
   };
 
   const handleClickcancel = () => {
@@ -87,6 +89,7 @@ export const useNewAddress = () => {
       { ...address, numberAddress: +address.numberAddress, cityId: +localCEP.cityId },
       'Endereço adicionado com sucesso!',
     );
+    navigate(RoutesEnum.USER_ADDRESS);
   };
 
   return {

@@ -7,7 +7,7 @@ import { ButtonPlus } from '../../../shared/components/buttons/button.styels';
 import { LimitedContainer } from '../../../shared/components/containers/limitedContainers.styled';
 import {
   DisplayFlexCenter,
-  DisplayFlexCenterCustom,
+  LoadingContainer,
 } from '../../../shared/components/displays/display.styled';
 import Loading from '../../../shared/components/loading/Loading';
 import { Screen } from '../../../shared/components/screen/Screen';
@@ -35,9 +35,9 @@ export const ProductDetails = () => {
     <Screen>
       <ProductContainer>
         {loading ? (
-          <DisplayFlexCenterCustom>
+          <LoadingContainer>
             <Loading size="large" />
-          </DisplayFlexCenterCustom>
+          </LoadingContainer>
         ) : (
           <>
             <Image
@@ -46,13 +46,12 @@ export const ProductDetails = () => {
               style={{ objectFit: 'cover', minWidth: '300px', borderRadius: '20px' }}
               src={product?.image}
             />
+
             <ProductDatailsContainer>
               <ProductDatailsInternalArea>
                 <ProductAdvancedInfo>
                   <Description>
-                    <DescriptionTitle fontSize={30} margin={20}>
-                      {product?.name}
-                    </DescriptionTitle>
+                    <DescriptionTitle fontSize={30}>{product?.name}</DescriptionTitle>
                   </Description>
                   <LimitedContainer width={250}>
                     <Description>
@@ -111,6 +110,8 @@ export const ProductDetails = () => {
                   <div>
                     <SubTotalDescription>{convertMoney(product?.price)}</SubTotalDescription>
                   </div>
+                  <div style={{ fontSize: '14px', marginRight: '10px' }}>Quantidade: </div>
+
                   <div
                     style={{
                       display: 'flex',
@@ -123,7 +124,6 @@ export const ProductDetails = () => {
                       borderRadius: '50px',
                     }}
                   >
-                    <div style={{ fontSize: '16px', marginRight: '10px' }}>Quantidade: </div>
                     <LimitedContainer width={40}>
                       <ButtonPlus onClick={() => setAmountProduct(amountProduct + 1)}>
                         <PlusOutlined />

@@ -6,6 +6,8 @@ import {
 } from '../../../shared/components/displays/display.styled';
 import { InputDefault } from '../../../shared/components/inputs/InputDefault';
 import { Screen } from '../../../shared/components/screen/Screen';
+import { cpfMask } from '../../../shared/functions/cpfMask';
+import { phoneMask } from '../../../shared/functions/phoneMask';
 import { useUserInsert } from '../hooks/useUserInsert';
 
 export const CreateUser = () => {
@@ -42,19 +44,21 @@ export const CreateUser = () => {
             />
             <InputDefault
               onChange={(event) => handleChange(event, 'cpf')}
-              value={createUser.cpf}
+              value={cpfMask(createUser.cpf)}
               title="CPF"
               placeholder="000.000.000-00"
               autoComplete="current-cpf"
               margin="0px 0px 8px 0px"
+              maxLength={14}
             />
             <InputDefault
               onChange={(event) => handleChange(event, 'phone')}
-              value={createUser.phone}
+              value={phoneMask(createUser.phone)}
               title="Telefone"
               placeholder="4899900000"
               autoComplete="current-phone"
               margin="0px 0px 8px 0px"
+              maxLength={15}
             />
             <InputDefault
               onChange={(event) => handleChange(event, 'password')}
@@ -64,6 +68,7 @@ export const CreateUser = () => {
               autoComplete="current-password"
               placeholder="Sua senha"
               margin="0px 0px 8px 0px"
+              maxLength={20}
             />
           </form>
           <DisplayFlexEvenly>

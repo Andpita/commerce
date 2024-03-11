@@ -55,12 +55,12 @@ export const ChangePassword = () => {
               </DisplayFlexCenter>
             </FormDefault>
             <DisplayFlexEvenly>
-              <LimitedContainer width={200}>
+              <LimitedContainer width={150}>
                 <Button loading={loading} onClick={submitChangePass} type="primary">
                   Alterar senha
                 </Button>
               </LimitedContainer>
-              <LimitedContainer width={200}>
+              <LimitedContainer width={150}>
                 <Button danger type="primary">
                   Cancelar
                 </Button>

@@ -14,17 +14,33 @@ export const DisplayFlexEvenlyNoMargin = styled.div`
 `;
 
 export const DisplayFlexCenter = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
 `;
 
-export const DisplayFlexCenterCustom = styled.div`
+export const DisplayFlexCenterNoMargin = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const DisplayFlexCenterCustom = styled.div`
+  width: 70%;
   display: flex;
   justify-content: center;
   height: 300px;
   align-items: center;
+`;
+
+export const LoadingContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  min-width: 400px;
 `;

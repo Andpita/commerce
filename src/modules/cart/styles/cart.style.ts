@@ -5,7 +5,7 @@ import { ColorsEnum } from '../../../shared/enums/colors.enum';
 export const CartContainer = styled.div`
   height: 100%;
   padding: 20px;
-  background-color: ${ColorsEnum.Primary};
+  background-color: ${ColorsEnum.Medium};
   border-radius: 10px;
 `;
 
@@ -22,6 +22,7 @@ export const DividerCart = styled.div`
 export const AreaPayment = styled.div`
   min-width: 30%;
   min-height: 100%;
+  max-height: 550px;
   background-color: white;
   border-radius: 5px;
   display: flex;

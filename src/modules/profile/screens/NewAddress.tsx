@@ -2,10 +2,15 @@ import { Select } from 'antd';
 
 import { Button } from '../../../shared/components/buttons/Button';
 import { LimitedContainer } from '../../../shared/components/containers/limitedContainers.styled';
-import { DisplayFlexEvenly } from '../../../shared/components/displays/display.styled';
+import {
+  DisplayFlexCenter,
+  DisplayFlexCenterNoMargin,
+  DisplayFlexEvenly,
+} from '../../../shared/components/displays/display.styled';
 import { InputDefault } from '../../../shared/components/inputs/InputDefault';
 import { MenuProfile } from '../../../shared/components/menu/MenuProfile';
 import { Screen } from '../../../shared/components/screen/Screen';
+import { cepMask } from '../../../shared/functions/cepMask';
 import { useNewAddress } from '../hooks/useNewAddress';
 import { FormDefault, TitleProfile } from '../styles/profile.style';
 
@@ -19,6 +24,7 @@ export const NewAddress = () => {
     loading,
     localCEP,
   } = useNewAddress();
+
   return (
     <Screen>
       <DisplayFlexEvenly>
@@ -36,11 +42,12 @@ export const NewAddress = () => {
             <FormDefault>
               <InputDefault
                 onChange={(e) => handleChange(e, 'cep')}
-                value={newAddress.cep}
+                value={cepMask(newAddress.cep)}
                 title="CEP"
                 placeholder="88021-000"
                 autoComplete="cep"
                 margin="0px 0px 8px 0px"
+                maxLength={9}
               />
               <InputDefault
                 onChange={(e) => handleChange(e, 'numberAddress')}
@@ -48,12 +55,13 @@ export const NewAddress = () => {
                 title="Número"
                 placeholder="1260"
                 margin="0px 0px 8px 0px"
+                type="number"
               />
               <InputDefault
                 onChange={(e) => handleChange(e, 'complement')}
                 value={newAddress.complement}
-                title="Complemento"
-                placeholder="AP 413"
+                title="Complemento / Obs"
+                placeholder="AP 413 / Casa ao lado do Mercado..."
                 autoComplete=""
                 margin="0px 0px 8px 0px"
               />
@@ -66,7 +74,8 @@ export const NewAddress = () => {
                 autoComplete="current-cpf"
                 margin="0px 0px 8px 0px"
               />
-              <div style={{ display: 'flex' }}>
+              <DisplayFlexCenter>
+                <div>Estado</div>
                 <Select
                   disabled
                   defaultValue="Estado"
@@ -74,6 +83,7 @@ export const NewAddress = () => {
                   style={{ width: '70%', margin: '8px' }}
                   value={localCEP.uf || ''}
                 />
+                <div>Cidade</div>
                 <Select
                   disabled
                   title="Cidade"
@@ -81,8 +91,9 @@ export const NewAddress = () => {
                   style={{ width: '100%', margin: '8px' }}
                   value={localCEP.city || ''}
                 />
-              </div>{' '}
-              <div style={{ display: 'flex' }}>
+              </DisplayFlexCenter>
+              <DisplayFlexCenterNoMargin>
+                <div>Bairro</div>
                 <Select
                   disabled
                   title="Bairro"
@@ -90,6 +101,7 @@ export const NewAddress = () => {
                   style={{ width: '100%', margin: '8px' }}
                   value={localCEP.neigborhood || ''}
                 />
+                <div>Rua</div>
                 <Select
                   disabled
                   title="Rua"
@@ -97,10 +109,11 @@ export const NewAddress = () => {
                   style={{ width: '100%', margin: '8px' }}
                   value={localCEP.publicPlace || ''}
                 />
-              </div>
+              </DisplayFlexCenterNoMargin>
             </FormDefault>
+
             <DisplayFlexEvenly>
-              <LimitedContainer width={200}>
+              <LimitedContainer width={150}>
                 <Button
                   disabled={disableButton}
                   loading={loading}
@@ -110,7 +123,7 @@ export const NewAddress = () => {
                   Adicionar Endereço
                 </Button>
               </LimitedContainer>
-              <LimitedContainer width={200}>
+              <LimitedContainer width={150}>
                 <Button danger type="primary" onClick={handleClickcancel}>
                   Cancelar
                 </Button>

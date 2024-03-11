@@ -1,7 +1,8 @@
 export const cpfMask = (cpf: string) => {
   if (!cpf) {
-    return '000.000.000-00';
+    return;
   }
+
   const newCpf = cpf?.replace(/\D/g, '');
 
   if (newCpf.length !== 11) {

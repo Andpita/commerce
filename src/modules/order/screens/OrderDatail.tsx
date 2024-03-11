@@ -75,20 +75,21 @@ export const OrderDetail = () => {
   const payment: DescriptionsProps['items'] = [
     {
       key: '1',
-      label: 'Data',
-      children: orderById ? dataModify(orderById?.date) : '0',
+      label: 'Hora',
+      children: orderById ? hourModify(orderById?.date) : '0',
       span: 1,
     },
     {
       key: '2',
-      label: 'Hora',
-      children: orderById ? hourModify(orderById?.date) : '0',
+      label: 'Data',
+      children: orderById ? dataModify(orderById?.date) : '0',
       span: 2,
     },
     {
       key: '3',
       label: 'ID Pagamento',
       children: orderById?.payment?.id,
+      span: 1,
     },
     {
       key: '4',
@@ -111,11 +112,13 @@ export const OrderDetail = () => {
       key: '6',
       label: 'Preço',
       children: convertMoney(orderById?.payment?.price || 0),
+      span: 2,
     },
     {
       key: '7',
       label: 'Desconto',
       children: convertMoney(orderById?.payment?.discount || 0),
+      span: 1,
     },
     {
       key: '8',
@@ -125,6 +128,7 @@ export const OrderDetail = () => {
         background: 'khaki',
         border: '500',
       },
+      span: 3,
     },
   ];
 

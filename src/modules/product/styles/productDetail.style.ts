@@ -7,14 +7,14 @@ export const ProductContainer = styled.div`
   border-radius: 20px;
   border: double lightblue 4px;
   margin-bottom: 10px;
-  min-width: 70%;
+  max-height: 400px;
+  min-width: 700px;
 `;
 
 export const ProductDatailsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 `;
 
 export const ProductDatailsInternalArea = styled.div`
@@ -26,7 +26,6 @@ export const ProductDatailsInternalArea = styled.div`
 export const ProductAdvancedInfo = styled.div`
   width: 100%;
   align-items: center;
-  padding: 5px 20px;
   border-right: solid lightblue 1px;
   border-left: solid lightblue 1px;
   margin: 10px;
@@ -34,7 +33,7 @@ export const ProductAdvancedInfo = styled.div`
 `;
 
 export const ProductValueInfo = styled.div`
-  padding: 5px 20px;
+  margin: 10px;
   width: 50%;
   display: flex;
   align-items: center;
@@ -51,12 +50,10 @@ export const Description = styled.div`
 
 interface DescriptionTitleProps {
   fontSize: number;
-  margin?: number;
 }
 
 export const DescriptionTitle = styled.span<DescriptionTitleProps>`
   font-size: ${(props) => props.fontSize}px;
-  margin-bottom: ${(props) => props.margin}px;
 
   font-weight: bold;
 `;

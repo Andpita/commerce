@@ -3,7 +3,10 @@ import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { LimitedContainer } from '../../../shared/components/containers/limitedContainers.styled';
-import { DisplayFlexCenter } from '../../../shared/components/displays/display.styled';
+import {
+  DisplayFlexCenter,
+  LoadingContainer,
+} from '../../../shared/components/displays/display.styled';
 import Loading from '../../../shared/components/loading/Loading';
 import { Screen } from '../../../shared/components/screen/Screen';
 import Table from '../../../shared/components/table/Table';
@@ -131,9 +134,9 @@ export const Cart = () => {
     <Screen>
       <CartContainer>
         {loading ? (
-          <DisplayFlexCenter>
+          <LoadingContainer>
             <Loading size="large" />
-          </DisplayFlexCenter>
+          </LoadingContainer>
         ) : (
           <DividerCart>
             <Table

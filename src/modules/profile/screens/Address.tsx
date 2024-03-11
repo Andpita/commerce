@@ -1,4 +1,4 @@
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
 import { TableProps } from 'antd';
 
 import { Button } from '../../../shared/components/buttons/Button';
@@ -16,10 +16,10 @@ import { TitleProfile } from '../styles/profile.style';
 
 const columns: TableProps<AddressType>['columns'] = [
   {
-    title: 'Endereço',
+    title: 'Id',
     dataIndex: 'id',
     key: 'id',
-    width: 100,
+    width: 50,
     render: (text) => <a>{text}</a>,
   },
   {
@@ -50,13 +50,6 @@ const columns: TableProps<AddressType>['columns'] = [
         <Button
           marginLeft="20px"
           disabled
-          type="primary"
-          icon={<EditOutlined />}
-          style={{ fontSize: '10px', maxWidth: '80px', margin: '5px' }}
-        ></Button>
-        <Button
-          marginLeft="20px"
-          disabled
           danger
           type="primary"
           icon={<DeleteOutlined />}
@@ -81,7 +74,6 @@ export const Address = () => {
           }}
         >
           <LimitedContainer
-            width={600}
             style={{ background: '#8ECAE6', borderRadius: '10px', padding: '20px' }}
           >
             <TitleProfile>ENDEREÇOS</TitleProfile>
