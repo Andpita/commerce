@@ -1,3 +1,3 @@
-import { CreateUser } from './screens/Profile';
+import { Profile } from './screens/Profile';
 
-export default CreateUser;
+export default Profile;

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { URL_USER } from '../../../shared/constants/urls';
-import { InsertUser } from '../../../shared/dto/insertUser.dto.';
+import { InsertUserDTO } from '../../../shared/dto/insertUser.dto.';
 import { MethodsEnum } from '../../../shared/enums/methods.enum';
 import { RoutesEnum } from '../../../shared/enums/route.enum';
 import { useRequest } from '../../../shared/hooks/useRequest';
@@ -11,7 +11,7 @@ export const useUserInsert = () => {
   const [disableButton, setDisableButton] = useState(true);
   const { request, loading } = useRequest();
   const navigate = useNavigate();
-  const [createUser, setCreateUser] = useState<InsertUser>({
+  const [createUser, setCreateUser] = useState<InsertUserDTO>({
     name: '',
     lastName: '',
     email: '',
